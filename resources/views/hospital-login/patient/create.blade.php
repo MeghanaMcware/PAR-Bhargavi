@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('hospital-login.layout.app')
 
 @section('title')
     Patient List

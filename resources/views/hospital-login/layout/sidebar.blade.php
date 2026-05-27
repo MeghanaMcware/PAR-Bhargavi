@@ -19,46 +19,16 @@
                     </li>
 
 
-                    <li class="sidebar-list mb-2"><a class="sidebar-link sidebar-title link-nav text-white" href="">
+                    <li class="sidebar-list mb-2"><a class="sidebar-link sidebar-title link-nav text-white" href="{{ url('hospital-login/dashboard') }}">
                             <span class="text-white"><i class="bi bi-house-door-fill"></i></span>
                             <span class="text-white">Dashboard</span></a>
                     </li>
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav text-white"
-                            href="{{ url('registration') }}">
+                            href="{{ url('hospital-login/patient/index') }}">
                             <span class="text-white"><i class="bi bi-shop"></i></span>
-                            <span class="text-white">Registration</span></a>
+                            <span class="text-white">Patients List</span></a>
                     </li>
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title d-flex flex-row gap-2 text-white"
-                            href="#">
-                            <span class="text-white"><i class="bi bi-gear-fill"></i></span><span
-                                class="text-white">Master</span></a>
-                        <ul class="sidebar-submenu ">
-
-
-                            <li>
-                                <a class="sidebar-link sidebar-title link-nav text-white"
-                                    href="{{ url('hospital/index') }}">
-                                    <i class="bi bi-building text-white"></i> <span
-                                        class="text-white">Hospitals</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="sidebar-link sidebar-title link-nav text-white"
-                                    href="{{ url('/patient/index') }}">
-                                    <i class="bi bi-geo-alt text-white"></i> <span class="text-white">Patient</span>
-                                </a>
-                            </li>
-                           
-                            <li>
-                                <a class="sidebar-link sidebar-title link-nav text-white"
-                                    href="{{ url('version/index') }}">
-                                    <i class="bi bi-file-earmark-text text-white"></i> <span
-                                        class="text-white">Version</span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
+                  
 
 
                 </ul>

@@ -42,6 +42,14 @@
         .navbar-light .navbar-nav .nav-link::before {
                 background: #1E3A8A !important;
         }
+
+        /* Show error message */
+.was-validated .form-control:invalid~.invalid-feedback {
+    display: flex;
+}
+.needs-validation label {
+    margin-bottom: 0px !important;
+}
     </style>
 </head>
 
