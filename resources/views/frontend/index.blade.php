@@ -39,6 +39,10 @@
     .testimonial-carousel .owl-dot.active {
         background-color: #1e3a8a !important;
     }
+    .new-card {
+        width: 10%;
+        height: 10%;
+    }
 </style>
 @section('content')
 
@@ -126,6 +130,92 @@
         </div>
     </div>
     <!-- About End -->
+
+    <!-- Resources Start -->
+    <div class="container-fluid py-5 bg-light" id="resources">
+        <div class="container-fluid">
+            <div class="text-center mx-auto mb-5">
+                <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5 bbr-10 new-color">Resources</h5>
+                <h1 class="display-4">Healthcare Resources & Educational Materials</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-white rounded shadow-sm h-100 p-4 transition-all hover-shadow">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-3 new-card">
+                                <i class="fa fa-file-pdf fa-2x text-primary new-color fs-3"></i>
+                            </div>
+                            <h4 class="mb-0">Guidelines</h4>
+                        </div>
+                        <p class="text-muted mb-3">Access comprehensive clinical guidelines for sepsis management and treatment protocols.</p>
+                        <a href="#!" class="btn btn-outline-primary rounded-pill">Know More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-white rounded shadow-sm h-100 p-4 transition-all hover-shadow">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-3 new-card">
+                                <i class="fa fa-book fa-2x text-primary new-color fs-3"></i>
+                            </div>
+                            <h4 class="mb-0">Research Papers</h4>
+                        </div>
+                        <p class="text-muted mb-3">Browse our collection of peer-reviewed research papers and clinical studies on sepsis.</p>
+                        <a href="#!" class="btn btn-outline-primary rounded-pill">Know More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-white rounded shadow-sm h-100 p-4 transition-all hover-shadow">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-3 new-card">
+                                <i class="fa fa-users fa-2x text-primary new-color fs-3"></i>
+                            </div>
+                            <h4 class="mb-0">Patient Education</h4>
+                        </div>
+                        <p class="text-muted mb-3">Educational materials for patients and families to understand sepsis and prevention.</p>
+                        <a href="#!" class="btn btn-outline-primary rounded-pill">Know More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-white rounded shadow-sm h-100 p-4 transition-all hover-shadow">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-3 new-card">
+                                <i class="fa fa-video fa-2x text-primary new-color fs-3"></i>
+                            </div>
+                            <h4 class="mb-0">Video Tutorials</h4>
+                        </div>
+                        <p class="text-muted mb-3">Watch educational videos from medical experts on sepsis recognition and treatment.</p>
+                        <a href="#!" class="btn btn-outline-primary rounded-pill">Know More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-white rounded shadow-sm h-100 p-4 transition-all hover-shadow">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-3 new-card">
+                                <i class="fa fa-download fa-2x text-primary new-color fs-3"></i>
+                            </div>
+                            <h4 class="mb-0">Downloads</h4>
+                        </div>
+                        <p class="text-muted mb-3">Download brochures, fact sheets, and informational materials for offline use.</p>
+                        <a href="#!" class="btn btn-outline-primary rounded-pill">Know More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-white rounded shadow-sm h-100 p-4 transition-all hover-shadow">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-3 new-card">
+                                <i class="fa fa-link fa-2x text-primary new-color fs-3"></i>
+                            </div>
+                            <h4 class="mb-0">External Links</h4>
+                        </div>
+                        <p class="text-muted mb-3">Curated links to trusted healthcare organizations and sepsis resources.</p>
+                        <a href="#!" class="btn btn-outline-primary rounded-pill">Know More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Resources End -->
+
     <!-- About Sepsis Accordion Start -->
     <div class="container-fluid py-5" id="aboutsepsis">
         <div class="container-fluid">
@@ -531,7 +621,7 @@
 
                 <div class="bg-light rounded text-center">
                     <div class="position-relative">
-                        <img class="img-fluid rounded-top" src="{{asset('frontend/img/msramiahmemorial.png')}}" alt="">
+                        <img class="img-fluid rounded-top" src="{{asset('frontend/img/victoryhospital.png')}}" alt="">
                         <div class="position-absolute w-100 h-100 top-50 start-50 translate-middle rounded-top d-flex flex-column align-items-center justify-content-center"
                             style="background: rgba(29, 42, 77, .8);">
                             <div class="text-center d-flex flex-column align-items-center">
@@ -549,7 +639,7 @@
                 </div>
                 <div class="bg-light rounded text-center">
                     <div class="position-relative">
-                        <img class="img-fluid rounded-top" src="{{asset('frontend/img/msramiahmemorial.png')}}" alt="">
+                        <img class="img-fluid rounded-top" src="{{asset('frontend/img/victoryhospital.png')}}" alt="">
                         <div class="position-absolute w-100 h-100 top-50 start-50 translate-middle rounded-top d-flex flex-column align-items-center justify-content-center"
                             style="background: rgba(29, 42, 77, .8);">
                             <div class="text-center d-flex flex-column align-items-center">

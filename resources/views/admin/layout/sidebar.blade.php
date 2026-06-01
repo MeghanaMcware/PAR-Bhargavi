@@ -24,9 +24,9 @@
                             <span class="text-white">Dashboard</span></a>
                     </li>
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav text-white"
-                            href="{{ url('registration') }}">
-                            <span class="text-white"><i class="bi bi-shop"></i></span>
-                            <span class="text-white">Registration</span></a>
+                            href="{{ url('patient/index') }}">
+                            <span class="text-white"><i class="bi bi-person"></i></span>
+                            <span class="text-white">Add Patient</span></a>
                     </li>
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title d-flex flex-row gap-2 text-white"
                             href="#">
@@ -42,12 +42,12 @@
                                         class="text-white">Hospitals</span>
                                 </a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a class="sidebar-link sidebar-title link-nav text-white"
                                     href="{{ url('/patient/index') }}">
                                     <i class="bi bi-geo-alt text-white"></i> <span class="text-white">Patient</span>
                                 </a>
-                            </li>
+                            </li> -->
                            
                             <li>
                                 <a class="sidebar-link sidebar-title link-nav text-white"

@@ -12,7 +12,7 @@
               <div class="col-md-12 footer-copyright text-center">
                   <p class="mb-0">Copyright 2026 © PAR-BHARGAVI </p>
                    <p class="mb-0">
-                      <span class="text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;">
+                      <span class="text-primary" data-bs-toggle="modal" data-bs-target="#versionDocumentationModal" style="cursor:pointer">
                         Version 1.0.0
                       </span> | Designed and Developed by
                       <a href="https://mcwaretechnologies.com/" target="_blank"
@@ -25,7 +25,48 @@
       </div>
   </footer>
   
-  
+  <!-- Modal -->
+<div class="modal fade" id="versionDocumentationModal" tabindex="-1" aria-labelledby="versionDocumentationModalLabel" aria-hidden="true" style="z-index: 9999999;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="versionDocumentationModalLabel">Version Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: transparent !important;"></button>
+            </div>
+            <div class="modal-body changelog-container">
+                <div class="">
+                    <div class="changelog-item text-start">
+                        <div class="version-header">
+                            <div>
+                                <span class="version-number">v 1.0.0</span>
+                                <span class="latest-badge">LATEST</span>
+                               
+                            </div>
+                            <span class="release-date">15/10/2025</span>
+                        </div>
+                        <ul class="update-list">
+                            <li class="update-item">
+                                <span class="update-label label-new">
+                                Update
+                                </span>
+                                    Initial Release
+                            </li>
+                            <li class="update-item mt-1">
+                                Initial system setup and basic functionality.
+                            </li>
+                            <li class="update-item mt-1">
+                                <a href="#" target="_blank" class="text-primary">
+                                    <i class="bi bi-file-pdf"></i> View Release Notes
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     
 
 

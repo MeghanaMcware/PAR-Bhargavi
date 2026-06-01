@@ -6,6 +6,17 @@
 
 @section('style')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        .invalid-feedback {
+            display: none !important;
+        }
+
+        .was-validated .form-control:invalid~.invalid-feedback,
+        .form-control.is-invalid~.invalid-feedback {
+            display: flex !important;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -41,21 +52,21 @@
 
                         <div class="f1-step active">
                             <div class="f1-step-icon">
-                               <i class="fa fa-hospital-o"></i>
+                                <i class="fas fa-hospital"></i>
                             </div>
                             <p>SERIAL LAB </p>
                         </div>
 
                         <div class="f1-step">
                             <div class="f1-step-icon">
-                                <i class="fa fa-hospital-o"></i>
+                                <i class="fas fa-hospital"></i>
                             </div>
                             <p>MIC MICRO</p>
                         </div>
 
                         <div class="f1-step">
                             <div class="f1-step-icon">
-                                <i class="fa fa-hospital-o"></i>
+                                <i class="fas fa-hospital"></i>
                             </div>
                             <p>MS Ramiah Memorial</p>
                         </div>
@@ -128,7 +139,7 @@
                                 </div>
                             </div>
                             <div class="mb-3 col-lg-6 col-12">
-                                <label class="form-label" style="margin-bottom: 0px !important;">q-SOFA SCORE</label>
+                                <label class="form-label" style="margin-bottom: 0px !important;">q-SOFA SCORE1</label>
 
                                 <select class="form-select" name="q_sofa_score" required>
                                     <option value="">Select q-SOFA Score</option>
@@ -140,6 +151,141 @@
                                     Please select q-SOFA score
                                 </div>
                             </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">NLR <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="nlr" placeholder="Enter NLR" required>
+                                <div class="invalid-feedback">Please enter NLR</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">Platelets <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="platelets" placeholder="Enter Platelets"
+                                    required>
+                                <div class="invalid-feedback">Please enter Platelets</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">Hb <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="hb" placeholder="Enter Hb" required>
+                                <div class="invalid-feedback">Please enter Hb</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">PCT <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="pct" placeholder="Enter PCT" required>
+                                <div class="invalid-feedback">Please enter PCT</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">CRP <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="crp" placeholder="Enter CRP" required>
+                                <div class="invalid-feedback">Please enter CRP</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">S. Lactate <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="s_lactate" placeholder="Enter S. Lactate"
+                                    required>
+                                <div class="invalid-feedback">Please enter S. Lactate</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">BUN <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="bun" placeholder="Enter BUN" required>
+                                <div class="invalid-feedback">Please enter BUN</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">S. Creatinine <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="s_creatinine"
+                                    placeholder="Enter S. Creatinine" required>
+                                <div class="invalid-feedback">Please enter S. Creatinine</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">AST <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="ast" placeholder="Enter AST" required>
+                                <div class="invalid-feedback">Please enter AST</div>
+                            </div>
+
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">S. Bilirubin <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="s_bilirubin" placeholder="Enter S. Bilirubin"
+                                    required>
+                                <div class="invalid-feedback">Please enter S. Bilirubin</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">LDH <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="ldh" placeholder="Enter LDH" required>
+                                <div class="invalid-feedback">Please enter LDH</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">IL 6/8/10 <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="il_6_8_10" placeholder="Enter IL 6/8/10"
+                                    required>
+                                <div class="invalid-feedback">Please enter IL 6/8/10</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">pH ABG <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="ph_abg" placeholder="Enter pH ABG" required>
+                                <div class="invalid-feedback">Please enter pH ABG</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">PCO2 <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="pco2" placeholder="Enter PCO2" required>
+                                <div class="invalid-feedback">Please enter PCO2</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">PO2 <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="po2" placeholder="Enter PO2" required>
+                                <div class="invalid-feedback">Please enter PO2</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">HCO3 <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="hco3" placeholder="Enter HCO3" required>
+                                <div class="invalid-feedback">Please enter HCO3</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">APTT <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="aptt" placeholder="Enter APTT" required>
+                                <div class="invalid-feedback">Please enter APTT</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">PT <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="pt" placeholder="Enter PT" required>
+                                <div class="invalid-feedback">Please enter PT</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">INR <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="inr" placeholder="Enter INR" required>
+                                <div class="invalid-feedback">Please enter INR</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">d-Dimer <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="d_dimer" placeholder="Enter d-Dimer" required>
+                                <div class="invalid-feedback">Please enter d-Dimer</div>
+                            </div>
+
+                            <div class="mb-3 col-lg-6 col-md-6 col-12">
+                                <label class="form-label mb-0">Fibrinogen <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="fibrinogen" placeholder="Enter Fibrinogen"
+                                    required>
+                                <div class="invalid-feedback">Please enter Fibrinogen</div>
+                            </div>
+
+
                         </div>
 
 
@@ -183,11 +329,11 @@
 
                             <div class="mb-3 col-lg-6 col-12">
                                 <label for="f1-repeat-password" class="form-label">
-                                   Testing Date
+                                    Testing Date
                                 </label>
 
-                                <input class="form-control" id="f1-repeat-password" type="date"
-                                    name="testing_date" required>
+                                <input class="form-control" id="f1-repeat-password" type="date" name="testing_date"
+                                    required>
 
                                 <div class="invalid-feedback">
                                     Please select testing date
@@ -195,11 +341,11 @@
                             </div>
                             <div class="mb-3 col-lg-6 col-12">
                                 <label for="f1-repeat-password" class="form-label">
-                                  Organism Name
+                                    Organism Name
                                 </label>
 
-                                <input class="form-control" id="f1-repeat-password" type="text"
-                                    name="organism_name" placeholder="Enter organism name" required>
+                                <input class="form-control" id="f1-repeat-password" type="text" name="organism_name"
+                                    placeholder="Enter organism name" required>
 
                                 <div class="invalid-feedback">
                                     Please enter organism name
@@ -207,11 +353,11 @@
                             </div>
                             <div class="mb-3 col-lg-6 col-12">
                                 <label for="f1-repeat-password" class="form-label">
-                                  AMPICILLIN MIC
+                                    AMPICILLIN MIC
                                 </label>
 
-                                <input class="form-control" id="f1-repeat-password" type="text"
-                                    name="ampicillin_mic" placeholder="Enter AMPICILLIN MIC" required>
+                                <input class="form-control" id="f1-repeat-password" type="text" name="ampicillin_mic"
+                                    placeholder="Enter AMPICILLIN MIC" required>
 
                                 <div class="invalid-feedback">
                                     Please enter AMPICILLIN MIC
@@ -219,11 +365,11 @@
                             </div>
                             <div class="mb-3 col-lg-6 col-12">
                                 <label for="f1-repeat-password" class="form-label">
-                                  Interpretation
+                                    Interpretation
                                 </label>
 
-                                <input class="form-control" id="f1-repeat-password" type="text"
-                                    name="interpretation" placeholder="Enter interpretation" required>
+                                <input class="form-control" id="f1-repeat-password" type="text" name="interpretation"
+                                    placeholder="Enter interpretation" required>
 
                                 <div class="invalid-feedback">
                                     Please enter interpretation
@@ -231,11 +377,11 @@
                             </div>
                             <div class="mb-3 col-lg-6 col-12">
                                 <label for="f1-repeat-password" class="form-label">
-                                AMOX CLAVULANIC ACID
+                                    AMOX CLAVULANIC ACID
                                 </label>
 
-                                <input class="form-control" id="f1-repeat-password" type="text"
-                                    name="amox_clavulanic_acid" placeholder="Enter AMOX CLAVULANIC ACID" required>
+                                <input class="form-control" id="f1-repeat-password" type="text" name="amox_clavulanic_acid"
+                                    placeholder="Enter AMOX CLAVULANIC ACID" required>
 
                                 <div class="invalid-feedback">
                                     Please enter AMOX CLAVULANIC ACID

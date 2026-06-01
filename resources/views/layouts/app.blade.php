@@ -13,9 +13,10 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
@@ -31,25 +32,32 @@
 
     <!-- Template Stylesheet -->
     <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, label, span, li, div, button, a{
+    font-family: 'Oswald', sans-serif !important;
+}
         .new-color {
             color: #1E3A8A !important;
         }
-        .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link.active{
+
+        .navbar-light .navbar-nav .nav-link:hover,
+        .navbar-light .navbar-nav .nav-link.active {
             color: #1E3A8A !important;
         }
+
         .navbar-light .navbar-nav .nav-link::before {
-                background: #1E3A8A !important;
+            background: #1E3A8A !important;
         }
 
         /* Show error message */
-.was-validated .form-control:invalid~.invalid-feedback {
-    display: flex;
-}
-.needs-validation label {
-    margin-bottom: 0px !important;
-}
+        .was-validated .form-control:invalid~.invalid-feedback {
+            display: flex;
+        }
+
+        .needs-validation label {
+            margin-bottom: 0px !important;
+        }
     </style>
 </head>
 
