@@ -23,8 +23,8 @@
                             <span class="text-white"><i class="bi bi-house-door-fill"></i></span>
                             <span class="text-white">Dashboard</span></a>
                     </li>
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav text-white"
-                            href="{{ url('patient/index') }}">
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav text-white {{ request()->routeIs('patient/index') ? 'active1' : '' }}"
+                            href="{{ url('patient/index') }}" >
                             <span class="text-white"><i class="bi bi-person"></i></span>
                             <span class="text-white">Add Patient</span></a>
                     </li>
@@ -77,4 +77,14 @@
     .sidebar-list {
         margin: 8px 8px !important;
     }
+ .active1 {
+    background-color: #0d6efd !important;
+    color: #fff !important;
+    border-radius: 8px;
+}
+
+.active1 span,
+.active1 i {
+    color: #fff !important;
+}
 </style>
