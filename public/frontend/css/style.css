@@ -99,7 +99,7 @@
 .hero-header {
     background: url(../img/hero.png) top right no-repeat;
     background-size: cover;
-    height: 60vh;
+    height: auto !important;
 }
 
 .service-item {

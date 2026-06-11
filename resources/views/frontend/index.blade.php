@@ -43,21 +43,114 @@
         width: 10%;
         height: 10%;
     }
+    .hero-header {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(14,44,76,0.55);
+        backdrop-filter: blur(2px);
+        z-index: 0;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-search-box {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 8px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        box-shadow: 0 6px 18px rgba(16,24,40,0.12);
+    }
+
+    .hero-search-box .form-control,
+    .hero-search-box .form-select {
+        border: none;
+        box-shadow: none;
+        height: calc(2.25rem + 12px);
+    }
+
+    .hero-search-btn {
+        background: linear-gradient(180deg,#0556d3,#0b63d8);
+        color: #fff;
+        border: none;
+        padding: 10px 22px;
+        border-radius: 8px;
+    }
+
+    .popular-chip {
+        background: rgba(255,255,255,0.15);
+        color: #fff;
+        border-radius: 20px;
+        padding: 6px 12px;
+        display: inline-block;
+        margin-right: .5rem;
+        margin-bottom: .5rem;
+    }
+    .hero-header {
+    background: url(../img/hero.png) top right no-repeat;
+    background-size: cover;
+    height: auto !important;
+}
+.input-group{
+    width: 65% !important;
+}
+.text-white-50 {
+    color: #ffffffe6 !important;
+}
+
 </style>
 @section('content')
 
     <!-- Hero Start -->
-    <div class="container-fluid bg-primary py-5 mb-5 hero-header">
-        <div class="container-fluid py-5">
-            <div class="row justify-content-start  pt-5">
-                <div class="col-lg-8 text-center text-lg-start">
+    <div class="container-fluid bg-primary py-5 mb-5 hero-header" style="background-image: url({{ asset('frontend/img/hero.jpg') }});">
+        <div class="container-fuild py-5 hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-7 text-center text-lg-start">
                     <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5"
                         style="border-color: #ffc10770 !important;border-radius:10px">Welcome To PAR-BHARGAVI</h5>
-                    <h1 class="display-1 text-white mb-md-4">Providing Trusted Healthcare Services For Everyone</h1>
-                    <div class="pt-2">
-                        <a href="#!" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">Join Now</a>
-                        <a href="#!" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">Login</a>
+                    <h1 class="display-1 text-white mb-3">Hospital Data Directory</h1>
+                    <p class="text-white-50 mb-4 text-white" style="color: #ffffff !important;">Explore, compare and access verified data on hospitals across India for better healthcare decisions.</p>
+
+                    <div class="d-flex w-100 mb-3">
+                        <div class="flex-grow-1 hero-search-box">
+                            <div class="input-group">
+                                <span class="input-group-text bg-transparent border-0"><i class="fa fa-search text-secondary"></i></span>
+                                <input type="search" class="form-control form-control-lg" placeholder="Search Hospital Name, City or State">
+                            </div>
+                            <select class="form-select form-select-lg ms-2" style="max-width:220px;">
+                                <option>All States / UT</option>
+                            </select>
+                            <button class="btn hero-search-btn ms-2 text-white">Search <i class="fa fa-arrow-right ms-2"></i></button>
+                        </div>
                     </div>
+
+                    <div>
+                        <small class="text-white-50" style="color: #ffffff !important;">Popular Searches:</small>
+                        <div class="mt-2">
+                            <span class="popular-chip">Top 100 Hospitals</span>
+                            <span class="popular-chip">NABH Accredited</span>
+                            <span class="popular-chip">Government Hospitals</span>
+                            <span class="popular-chip">ICU Beds Data</span>
+                            <span class="popular-chip">Private Hospitals</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 text-center text-lg-end mb-4 mb-lg-0">
+                    <img src="{{ asset('frontend/img/newimage.jpg') }}" alt="dashboard" class="img-fluid rounded shadow" style="max-height:360px; object-fit:contain;">
                 </div>
             </div>
         </div>

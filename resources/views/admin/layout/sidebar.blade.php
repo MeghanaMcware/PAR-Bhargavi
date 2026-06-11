@@ -19,7 +19,7 @@
                     </li>
 
 
-                    <li class="sidebar-list mb-2"><a class="sidebar-link sidebar-title link-nav text-white" href="">
+                    <li class="sidebar-list mb-2"><a class="sidebar-link sidebar-title link-nav text-white" href="{{ url('/dashboard') }}">
                             <span class="text-white"><i class="bi bi-house-door-fill"></i></span>
                             <span class="text-white">Dashboard</span></a>
                     </li>
