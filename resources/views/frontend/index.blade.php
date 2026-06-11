@@ -150,7 +150,7 @@
                 </div>
 
                 <div class="col-lg-5 text-center text-lg-end mb-4 mb-lg-0">
-                    <img src="{{ asset('frontend/img/newimage.jpg') }}" alt="dashboard" class="img-fluid rounded shadow" style="max-height:360px; object-fit:contain;">
+                    <img src="{{ asset('frontend/img/newimage-removebg-preview.png') }}" alt="dashboard" class="img-fluid rounded shadow" style="max-height:360px; object-fit:contain;">
                 </div>
             </div>
         </div>
