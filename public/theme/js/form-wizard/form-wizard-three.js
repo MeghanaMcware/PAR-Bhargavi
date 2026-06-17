@@ -26,9 +26,14 @@ function bar_progress(progress_line_object, direction) {
     $('#top-navbar-1').on('hidden.bs.collapse', function(){
     	$.backstretch("resize");
     });
+    function isRequiredField($field) {
+        var $container = $field.closest('.mb-3, .form-group, .col-lg-6, .col-12');
+        return $container.find('label .text-danger, label span.text-danger').length > 0;
+    }
+
     $('.f1 fieldset:first').fadeIn('slow');
     
-    $('.f1 input[type="text"], .f1 input[type="password"], .f1 textarea').on('focus', function() {
+    $('.f1 input, .f1 textarea, .f1 select').on('focus', function() {
     	$(this).removeClass('input-error');
     });
     $('.f1 .btn-next').on('click', function() {
@@ -36,8 +41,19 @@ function bar_progress(progress_line_object, direction) {
     	var next_step = true;
         var current_active_step = $(this).parents('.f1').find('.f1-step.active');
     	var progress_line = $(this).parents('.f1').find('.f1-progress-line');
-    	parent_fieldset.find('input[type="text"], input[type="password"], textarea').each(function() {
-    		if( $(this).val() == "" ) {
+    	parent_fieldset.find('input, textarea, select').each(function() {
+    		var $field = $(this);
+    		if (!isRequiredField($field)) {
+    			return;
+    		}
+    		if ($field.is('select')) {
+    			if ($field.val() == "" || $field.val() === null) {
+    				$(this).addClass('input-error');
+    				next_step = false;
+    			} else {
+    				$(this).removeClass('input-error');
+    			}
+    		} else if( $(this).val() == "" ) {
     			$(this).addClass('input-error');
     			next_step = false;
     		}
@@ -65,8 +81,20 @@ function bar_progress(progress_line_object, direction) {
     	});
     });
     $('.f1').on('submit', function(e) {
-    	$(this).find('input[type="text"], input[type="password"], textarea').each(function() {
-    		if( $(this).val() == "" ) {
+    	$(this).find('input, textarea, select').each(function() {
+    		var $field = $(this);
+    		if (!isRequiredField($field)) {
+    			return;
+    		}
+    		if ($field.is('select')) {
+    			if ($field.val() == "" || $field.val() === null) {
+    				e.preventDefault();
+    				$(this).addClass('input-error');
+    			}
+    			else {
+    				$(this).removeClass('input-error');
+    			}
+    		} else if( $(this).val() == "" ) {
     			e.preventDefault();
     			$(this).addClass('input-error');
     		}
