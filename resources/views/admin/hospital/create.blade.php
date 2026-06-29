@@ -269,7 +269,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="">
-                                <i data-feather="home"></i>
+                                <i class="fa-solid fa-house"></i>
                             </a>
                         </li>
                         <li class="breadcrumb-item">Create</li>

@@ -1,5 +1,5 @@
 @extends('admin.layout.app')
-@section('title') Registration Details @endsection
+@section('title') Hospital Details @endsection
 
 @section('style')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -100,7 +100,7 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-sm-6">
-                <h3>Registration Details</h3>
+                <h3>Hospital Details</h3>
             </div>
             <div class="col-12 col-sm-6">
                 <ol class="breadcrumb">
@@ -108,7 +108,7 @@
                         <a href=""><i class="fa-solid fa-house"></i></a>
                     </li>
                    
-                    <li class="breadcrumb-item active">Registration Details</li>
+                    <li class="breadcrumb-item active">Hospital Details</li>
                 </ol>
             </div>
         </div>
@@ -125,25 +125,24 @@
                     <p class="section-heading"><i class="bi bi-person-fill me-1"></i>Registration Information</p>
                     <table class="table detail-table table-bordered mb-0">
                         <tr>
-                            <th>Patient ID</th>
-                            <td>PID-001</td>
-                        </tr>
-                        <tr>
-                            <th>Do you have hospital records saying diagnosis as sepsis?</th>
+                            <th>Are you consenting to share then with our research team</th>
                             <td>Yes</td>
                         </tr>
+                      
+                       
                         <tr>
-                            <th>Are you consenting to share then with our research team?</th>
-                            <td>Yes</td>
+                            <th>Do you have hospital records saying diagnosis as sepsis</th>
+                            <td>No</td>
                         </tr>
-                        <tr>
+                          <tr>
                             <th>Name</th>
-                            <td>Test</td>
+                            <td>msramiahmemorial</td>
                         </tr>
                         <tr>
-                            <th>Address</th>
-                            <td>123 Main St, City</td>
+                            <th>Email</th>
+                            <td>msramiahmemorial@gmail.com</td>
                         </tr>
+                        
                     </table>
                 </div>
             </div>
@@ -156,8 +155,8 @@
 
     {{-- Back button --}}
     <div class="mt-2 mb-4">
-        <a href="{{ url('/registration') }}" class="btn btn-secondary text-dark btn-sm mb-3">
-            <i class="bi bi-arrow-left me-1"></i> Back to Registrations
+        <a href="{{ url('/registered/list') }}" class="btn btn-secondary text-dark btn-sm mb-3">
+            <i class="bi bi-arrow-left me-1"></i> Back to List
         </a>
        
     </div>

@@ -57,6 +57,13 @@ Route::get('/hospital/create', function () {
     return view('admin.hospital.create');
 });
 
+Route::get('/registered/list', function () {
+    return view('admin.registeredhospitals.index');
+});
+Route::get('/registered/view', function () {
+    return view('admin.registeredhospitals.show');
+});
+
 
 
 

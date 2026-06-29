@@ -28,6 +28,11 @@
                             <span class="text-white"><i class="bi bi-person"></i></span>
                             <span class="text-white">Add Patient</span></a>
                     </li>
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav text-white {{ request()->routeIs('registered/list') ? 'active1' : '' }}"
+                            href="{{ url('registered/list') }}" >
+                            <span class="text-white"><i class="bi bi-person"></i></span>
+                            <span class="text-white">Registered Hospitals</span></a>
+                    </li>
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title d-flex flex-row gap-2 text-white"
                             href="#">
                             <span class="text-white"><i class="bi bi-gear-fill"></i></span><span
