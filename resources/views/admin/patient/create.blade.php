@@ -165,7 +165,7 @@
                             </div>
                         </div>
                         <div class="mb-3 col-lg-4 col-12">
-                            <div class="mb-3">
+                            <div class="mb-0">
                                 <label class="col-form-label mb-0 pb-0 pt-0">Sex</label>
                                 <select class="js-example-placeholder-multiple col-sm-12">
                                     <option value="AL">Male</option>
@@ -191,7 +191,7 @@
                             </div>
                         </div>
                         <div class="mb-3 col-lg-4 col-12">
-                            <div class="mb-3">
+                            <div class="mb-0">
                                 <label class="col-form-label mb-0 pb-0 pt-0">Symptom Duration</label>
                                 <select class="js-example-placeholder-multiple col-sm-12">
                                     <option value="AL">>15days (3weeks)</option>
@@ -202,7 +202,7 @@
                             </div>
                         </div>
                         <div class="mb-3 col-lg-4 col-12">
-                            <div class="mb-3">
+                            <div class="mb-0">
                                 <label class="col-form-label mb-0 pb-0 pt-0">Comorbidities(CC INDEX)</label>
                                 <select class="js-example-placeholder-multiple col-sm-12">
                                     <option value="AL">2</option>
@@ -219,6 +219,42 @@
 
                                     <div class="invalid-feedback">
                                         Please enter any comorbidity (<5 years). 
+                                    </div>
+                        </div>
+                        <div class="mb-3 col-lg-4 col-12">
+                            <label class="form-label mb-0">Previously ill requiring admission last 3 months?</label>
+                                    <input class="form-control" type="text" name="comorbidity"
+                                        placeholder="Enter previously ill requiring admission last 3 months?">
+
+                                    <div class="invalid-feedback">
+                                        Please enter previously ill requiring admission last 3 months? 
+                                    </div>
+                        </div>
+                        <div class="mb-3 col-lg-4 col-12">
+                            <label class="form-label mb-0">Previously received any antibiotic last 3 months?</label>
+                                    <input class="form-control" type="text" name="comorbidity"
+                                        placeholder="Enter previously received any antibiotic last 3 months?">
+
+                                    <div class="invalid-feedback">
+                                        Please enter Previously received any antibiotic last 3 months? 
+                                    </div>
+                        </div>
+                        <div class="mb-3 col-lg-4 col-12">
+                            <label class="form-label mb-0">Initital probable sepsis diagnosis mentioned in file</label>
+                                    <input class="form-control" type="text" name="comorbidity"
+                                        placeholder="Enter initital probable sepsis diagnosis mentioned in file">
+
+                                    <div class="invalid-feedback">
+                                        Please enter initital probable sepsis diagnosis mentioned in file 
+                                    </div>
+                        </div>
+                        <div class="mb-3 col-lg-4 col-12">
+                            <label class="form-label mb-0">Direct admission here or referred here?</label>
+                                    <input class="form-control" type="text" name="comorbidity"
+                                        placeholder="Enter direct admission here or referred here?">
+
+                                    <div class="invalid-feedback">
+                                        Please enter direct admission here or referred here? 
                                     </div>
                         </div>
                         <div class="d-flex flex-column align-items-center">

@@ -85,7 +85,7 @@
 
 
         .title {
-            font-size: 13px;
+            font-size: 15px;
         }
 
 
@@ -357,7 +357,7 @@
                         <div>
 
                             <div class="title">
-                                Total Patients
+                               <b> Total Patients</b>
                             </div>
 
 
@@ -405,7 +405,7 @@
                         <div>
 
                             <div class="title">
-                                Total Hospital
+                                <b>Total Hospital</b>
                             </div>
 
                             <div class="number">
@@ -451,7 +451,7 @@
                         <div>
 
                             <div class="title">
-                                Total Registered Hospitals
+                                <b>Total Registered Hospitals</b>
                             </div>
 
                             <div class="number">
@@ -507,7 +507,7 @@
 
                 <div class="card-box chart-card">
 
-                    <h6>Patients Overview</h6>
+                    <h6><b>Patients Overview</b></h6>
 
                     <canvas id="line"></canvas>
 
@@ -526,7 +526,7 @@
                 <div class="card-box chart-card">
 
 
-                    <h6>Patient by Gender</h6>
+                    <h6><b>Patient by Gender</b></h6>
 
 
                     <canvas id="donut"></canvas>
@@ -548,7 +548,7 @@
                 <div class="card-box chart-card">
 
 
-                    <h6>Latest Activities</h6>
+                    <h6><b>Latest Activities</b></h6>
 
 
 
@@ -639,7 +639,7 @@
         <!-- TABLES -->
 
 
-        <div class="row g-3 mt-1">
+        <div class="row g-3 mt-1 mb-4">
 
 
 

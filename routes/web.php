@@ -33,6 +33,9 @@ Route::get('/patient/create', function () {
 Route::get('/patient/index', function () {
     return view('admin.patient.index');
 });
+Route::get('/patient/update', function () {
+    return view('admin.patient.update');
+});
 
 
 
