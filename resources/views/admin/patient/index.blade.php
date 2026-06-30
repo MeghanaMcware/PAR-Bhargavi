@@ -56,10 +56,10 @@
                                         <i class="bi bi-eye me-1"></i> <span>View</span>
                                     </a>
                                     <a href="{{ url('/patient/create') }}" class="btn btn-warning btn-sm d-flex flex-row">
-                                        <i class="bi bi-eye me-1"></i> <span>Edit</span>
+                                        <i class="bi bi-pencil me-1"></i> <span>Edit</span>
                                     </a>
                                     <a href="{{ url('/patient/update') }}" class="btn btn-info btn-sm d-flex flex-row">
-                                        <i class="bi bi-eye me-1"></i> <span>Update</span>
+                                        <i class="bi bi-arrow-repeat me-1"></i> <span>Update</span>
                                     </a>
                                   
                                 </td>

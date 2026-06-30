@@ -35,6 +35,9 @@ Route::prefix('admin')->as('admin.')->group(function () {
 Route::get('/patient/update', function () {
     return view('admin.patient.update');
 });
+Route::get('/patient/continueform', function () {
+    return view('admin.patient.continueform');
+});
 
     Route::post('/version/toggle-status', [VersionController::class, 'toggleStatus'])->name('version.toggleStatus');
     Route::resource('version', VersionController::class);
