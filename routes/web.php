@@ -2,8 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HospitalController;
+use App\Http\Controllers\Admin\VersionController;
+use App\Http\Controllers\Admin\RegistrationController;
 
 
+
+Route::get('/', function () {
+    return view('frontend.index');
+});
 
 Route::prefix('admin')->as('admin.')->group(function () {
     Route::get('/', function () {
@@ -14,13 +20,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
         return view('admin.dashboard');
     });
 
-    Route::get('/registration', function () {
-        return view('admin.registration.index');
-    });
 
-    Route::get('/registration/view', function () {
-        return view('admin.registration.view');
-    });
 
 
     Route::get('/patient/view', function () {
@@ -36,31 +36,24 @@ Route::get('/patient/update', function () {
     return view('admin.patient.update');
 });
 
-    Route::get('/version/index', function () {
-        return view('admin.version.index');
-    });
-    Route::get('/version/view', function () {
-        return view('admin.version.view');
-    });
-    Route::get('/version/create', function () {
-        return view('admin.version.create');
-    });
+    Route::post('/version/toggle-status', [VersionController::class, 'toggleStatus'])->name('version.toggleStatus');
+    Route::resource('version', VersionController::class);
 
     Route::resource('hospital', HospitalController::class);
 });
 
-Route::get('/registered/list', function () {
-    return view('admin.registeredhospitals.index');
-});
-Route::get('/registered/view', function () {
-    return view('admin.registeredhospitals.show');
-});
+Route::get('/registered/list', [RegistrationController::class, 'index'])->name('registered.list');
+Route::get('/registered/view/{id}', [RegistrationController::class, 'show'])->name('registered.show');
 
 
 
 
 
 
+
+use App\Http\Controllers\HospitalRegistrationController;
+
+Route::post('/join-registry', [HospitalRegistrationController::class, 'store'])->name('frontend.registry.store');
 
 Route::get('/hospital-login/dashboard', function () {
     return view('hospital-login.dashboard');
@@ -77,6 +70,7 @@ Route::get('/hospital-login/patient/create', function () {
 Route::get('/hospital-login/patient/index', function () {
     return view('hospital-login.patient.index');
 });
+
 
 
 

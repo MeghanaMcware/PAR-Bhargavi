@@ -264,43 +264,55 @@
                     <table class="table table-bordered">
                         <tr>
                             <th width="30%">Name</th>
-                            <td>Test Name</td>
+                            <td>{{ $version->name }}</td>
                         </tr>
                         <tr>
                             <th>Code</th>
-                            <td>1.0.0</td>
+                            <td>{{ $version->code }}</td>
                         </tr>
                         <tr>
                             <th>Title</th>
-                            <td>Test Title</td>
+                            <td>{{ $version->title }}</td>
                         </tr>
                         <tr>
                             <th>Type</th>
                             <td>
-                               <span>Test Type</span>
+                               <span>{{ ucfirst($version->type) }}</span>
                             </td>
                         </tr>
                         <tr>
                             <th>Date</th>
                             <td>
-                                <span>2025-10-15</span>
+                                <span>{{ $version->date }}</span>
                             </td>
                         </tr>
                         <tr>
                             <th>Description</th>
                             <td>
-                              <span>Test Description</span>
+                              <span>{{ $version->description }}</span>
                             </td>
                         </tr>
                         <tr>
                             <th>Upload Document</th>
                             <td>
-                              <span><a href="#" target="_blank">View</a></span>
+                              <span>
+                                  @if($version->pdf)
+                                      <a href="{{ asset('storage/' . $version->pdf) }}" target="_blank">View PDF</a>
+                                  @else
+                                      No PDF attached.
+                                  @endif
+                              </span>
                             </td>
                         </tr>
                         
                     </table>
                 </div>
+            </div>
+            
+            <div class="mt-3 mb-4">
+                <a href="{{ route('admin.version.index') }}" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-arrow-left me-1"></i> Back to Versions
+                </a>
             </div>
         </div>
     </div>

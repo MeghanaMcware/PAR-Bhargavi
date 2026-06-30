@@ -126,21 +126,21 @@
                     <table class="table detail-table table-bordered mb-0">
                         <tr>
                             <th>Are you consenting to share then with our research team</th>
-                            <td>Yes</td>
+                            <td>{{ $registration->consent_share == 1 ? 'Yes' : 'No' }}</td>
                         </tr>
                       
                        
                         <tr>
                             <th>Do you have hospital records saying diagnosis as sepsis</th>
-                            <td>No</td>
+                            <td>{{ $registration->sepsis_diagnosis == 1 ? 'Yes' : 'No' }}</td>
                         </tr>
                           <tr>
                             <th>Name</th>
-                            <td>msramiahmemorial</td>
+                            <td>{{ $registration->name }}</td>
                         </tr>
                         <tr>
                             <th>Email</th>
-                            <td>msramiahmemorial@gmail.com</td>
+                            <td>{{ $registration->email }}</td>
                         </tr>
                         
                     </table>
@@ -155,7 +155,7 @@
 
     {{-- Back button --}}
     <div class="mt-2 mb-4">
-        <a href="{{ url('/registered/list') }}" class="btn btn-secondary text-dark btn-sm mb-3">
+        <a href="{{ route('registered.list') }}" class="btn btn-secondary text-dark btn-sm mb-3">
             <i class="bi bi-arrow-left me-1"></i> Back to List
         </a>
        

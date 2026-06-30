@@ -41,18 +41,20 @@
                         </thead>
                         <tbody>
 
+                            @foreach($registrations as $key => $registration)
                             <tr>
-                                <td>01</td>
+                                <td>{{ str_pad($key + 1, 2, '0', STR_PAD_LEFT) }}</td>
                                 
-                                <td>msramiahmemorial@gmail.com</td>
-                                <td>ramhai@gmail.com</td>
+                                <td>{{ $registration->name }}</td>
+                                <td>{{ $registration->email }}</td>
 
                                 <td>
-                                    <a href="{{ url('/registered/view') }}" class="btn btn-primary btn-sm">
+                                    <a href="{{ route('registered.show', $registration->id) }}" class="btn btn-primary btn-sm">
                                         <i class="bi bi-eye me-1"></i> View
                                     </a>
                                 </td>
                             </tr>
+                            @endforeach
 
                         </tbody>
                     </table>

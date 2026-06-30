@@ -1,5 +1,5 @@
 @extends('admin.layout.app')
-@section('title') Create Version @endsection
+@section('title') Edit Version @endsection
 
 @section('style')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -262,7 +262,7 @@
             <div class="row">
                 <div class="col-12 col-sm-6">
                     <h3>
-                        Create Version
+                        Edit Version
                     </h3>
                 </div>
                 <div class="col-12 col-sm-6">
@@ -272,7 +272,7 @@
                                 <i class="fa-solid fa-house"></i>
                             </a>
                         </li>
-                        <li class="breadcrumb-item">Create</li>
+                        <li class="breadcrumb-item">Edit</li>
                     </ol>
                 </div>
             </div>
@@ -285,12 +285,13 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <form action="{{ route('admin.version.store') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        <form action="{{ route('admin.version.update', $version->id) }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                            @method('PUT')
                             @csrf
                             <div class="d-flex row m-0">
                                 <div class="col-lg-4 col-md-6 col-12 mb-3">
                                     <label class="form-label mb-0"> Name <span class="text-danger">*</span></label>
-                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"
+                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $version->name) }}"
                                         placeholder="Enter version name" required minlength="2" maxlength="100"
                                         oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
                                     @error('name')
@@ -304,7 +305,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-12 mb-3">
                                     <label class="form-label mb-0"> Code <span class="text-danger">*</span></label>
-                                    <input type="text" name="code" class="form-control @error('code') is-invalid @enderror" value="{{ old('code') }}"
+                                    <input type="text" name="code" class="form-control @error('code') is-invalid @enderror" value="{{ old('code', $version->code) }}"
                                         placeholder="Enter version code" required minlength="2" maxlength="100">
                                     @error('code')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -317,7 +318,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-12 mb-3">
                                     <label class="form-label mb-0"> Title <span class="text-danger">*</span></label>
-                                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}"
+                                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title', $version->title) }}"
                                         placeholder="Enter version title" required minlength="2" maxlength="100"
                                         oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
                                     @error('title')
@@ -332,8 +333,8 @@
                                     <label class="form-label mb-0">Version Type <span class="text-danger">*</span></label>
                                     <select name="type" class="form-control @error('type') is-invalid @enderror" required>
                                         <option value="">Select version type</option>
-                                        <option value="new" {{ old('type') == 'new' ? 'selected' : '' }}>New</option>
-                                        <option value="fix" {{ old('type') == 'fix' ? 'selected' : '' }}>Fix</option>
+                                        <option value="new" {{ old('type', $version->type) == 'new' ? 'selected' : '' }}>New</option>
+                                        <option value="fix" {{ old('type', $version->type) == 'fix' ? 'selected' : '' }}>Fix</option>
                                     </select>
                                     @error('type')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -345,7 +346,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-12 mb-3">
                                     <label class="form-label mb-0">Date <span class="text-danger">*</span></label>
-                                    <input type="date" name="date" class="form-control @error('date') is-invalid @enderror" value="{{ old('date') }}"
+                                    <input type="date" name="date" class="form-control @error('date') is-invalid @enderror" value="{{ old('date', $version->date) }}"
                                         placeholder="Enter version date" required>
                                     @error('date')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -358,8 +359,13 @@
                                 <div class="col-lg-4 col-md-6 col-12 mb-3">
                                     <label class="form-label mb-0">Upload Pdf <span class="text-danger">*</span></label>
                                     <input type="file" name="pdf" class="form-control @error('pdf') is-invalid @enderror" 
-                                        accept=".pdf,application/pdf" required
+                                        accept=".pdf,application/pdf" 
                                         data-max-size="2097152">
+                                    @if($version->pdf)
+                                        <div class="mt-2">
+                                            <a href="{{ asset('storage/' . $version->pdf) }}" target="_blank">View Current PDF</a>
+                                        </div>
+                                    @endif
                                     @error('pdf')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @else
@@ -371,7 +377,7 @@
                                 <div class="col-lg-4 col-md-6 col-12 mb-3">
                                     <label class="form-label mb-0">Description <span class="text-danger">*</span></label>
                                     <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="3"
-                                        placeholder="Enter version description" required minlength="2" maxlength="500">{{ old('description') }}</textarea>
+                                        placeholder="Enter version description" required minlength="2" maxlength="500">{{ old('description', $version->description) }}</textarea>
                                     @error('description')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @else
@@ -385,7 +391,7 @@
 
                             <div class="col-12 text-center mt-3">
                                 <button type="submit" class="btn btn-primary" id="submitBtn">
-                                    <span id="btnText">Submit</span>
+                                    <span id="btnText">Update</span>
                                     <span id="btnLoader" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                                 </button>
                             </div>

@@ -603,7 +603,8 @@
                 <div class="col-lg-6">
                     <div class="bg-white text-center rounded p-5">
                         <h1 class="mb-4">Join Today</h1>
-                        <form id="joinForm" class="needs-validation" novalidate>
+                        <form id="joinForm" class="needs-validation" novalidate action="{{ route('frontend.registry.store') }}" method="POST">
+                            @csrf
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6 d-flex flex-column align-items-start">
                                     <label for="name" class="ms-1 text-start"><b>Do you have hospital records saying
@@ -824,42 +825,44 @@
     </div>
     <!-- Testimonial End -->
 
+@endsection
 
+@section('scripts')
+<script>
+$(document).ready(function() {
+    $('#joinForm').on('submit', function(e) {
+        e.preventDefault();
+        
+        let form = $(this);
+        let url = form.attr('action');
+        let data = form.serialize();
 
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script>
-        (function () {
-            'use strict'
-            var forms = document.querySelectorAll('.needs-validation')
-            Array.prototype.slice.call(forms)
-                .forEach(function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        } else {
-                            event.preventDefault()
-                            event.stopPropagation()
-
-                            Swal.fire({
-                                title: 'Thank You!',
-                                text: 'Thank you for registering with PAR-BHARGAVI. Our healthcare team will contact you shortly.',
-                                icon: 'success',
-                                confirmButtonText: 'OK',
-                                confirmButtonColor: '#1e3a8a'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    form.reset()
-                                    form.classList.remove('was-validated')
-                                }
-                            })
-                        }
-                        form.classList.add('was-validated')
-                    }, false)
-                })
-        })()
-    </script>
-
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data,
+            success: function(response) {
+                if(response.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: response.message,
+                        confirmButtonColor: '#1e3a8a'
+                    });
+                    form[0].reset();
+                    form.removeClass('was-validated');
+                }
+            },
+            error: function(xhr) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong! Please check the fields.',
+                    confirmButtonColor: '#1e3a8a'
+                });
+            }
+        });
+    });
+});
+</script>
 @endsection
