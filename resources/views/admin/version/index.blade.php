@@ -265,7 +265,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h4 class="mb-0 add"></h4>
                             <div class="d-flex gap-2">
-                                <a href="{{ url('version/create') }}" class="btn btn-primary">
+                                <a href="{{ route('admin.version.create') }}" class="btn btn-primary">
                                     <i class="bi bi-plus-circle me-1"></i>
                                     Add Version
                                 </a>
@@ -285,27 +285,33 @@
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
-                            
+                                <tbody>
+                                    @foreach($versions as $key => $version)
                                         <tr>
-                                            <td>01</td>
-                                            <td>Test Version</td>
-                                            <td>1.0.0</td>
-                                            <td>Test Version Title</td>
-                                            <td>Test Version Description</td>
+                                            <td>{{ str_pad($key + 1, 2, '0', STR_PAD_LEFT) }}</td>
+                                            <td>{{ $version->name }}</td>
+                                            <td>{{ $version->code }}</td>
+                                            <td>{{ $version->title }}</td>
+                                            <td>{{ $version->description }}</td>
                                             <td>
                                                 <label class="switch mb-0">
-                                                    <input type="checkbox" class="toggle-status" >
+                                                    <input type="checkbox" class="toggle-status" data-id="{{ $version->id }}" {{ $version->status ? 'checked' : '' }}>
                                                     <span class="slider"></span>
                                                 </label>
                                             </td>
                                             <td class="d-flex flex-row align-items-center justify-content-center">
                                                 <span class="d-flex flex-row gap-2">
-                                                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                                                    <a href="{{ url('version/view') }}" class="btn btn-sm btn-info text-white">View</a>
+                                                    <a href="{{ route('admin.version.show', $version->id) }}" class="btn btn-sm btn-info text-white"><i class="bi bi-eye"></i> View</a>
+                                                    <a href="{{ route('admin.version.edit', $version->id) }}" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i> Edit</a>
+                                                    <form action="{{ route('admin.version.destroy', $version->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this version?');">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</button>
+                                                    </form>
                                                 </span>
                                             </td>
                                         </tr>
-                                   
+                                    @endforeach
                                      
                                 </tbody>
                             </table>
@@ -320,5 +326,41 @@
 @endsection
 
 @section('script')
+<script>
+$(document).ready(function() {
+    $('.toggle-status').on('change', function() {
+        let status = $(this).prop('checked') ? 1 : 0;
+        let version_id = $(this).data('id');
+        let _token = $('meta[name="csrf-token"]').attr('content');
 
+        $.ajax({
+            url: "{{ route('admin.version.toggleStatus') }}",
+            type: "POST",
+            data: {
+                _token: _token,
+                id: version_id,
+                status: status
+            },
+            success: function(response) {
+                if(response.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: response.message,
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                }
+            },
+            error: function(xhr) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Something went wrong!',
+                });
+            }
+        });
+    });
+});
+</script>
 @endsection
