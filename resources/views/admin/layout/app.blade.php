@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="description"
-        content="AAWMS">
+        content="PAR-BHARGAVI">
     <meta name="keywords"
-        content="AAWMS">
+        content="PAR-BHARGAVI">
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="{{asset('pwa/images/GBA-removebg-preview.png')}}">
-    <title>@yield('title') - AAWMS Admin</title>
+    <title>@yield('title') - PAR-BHARGAVI Admin</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -65,7 +65,7 @@
 
     /* Enhanced Sidebar Styling */
     .sidebar-wrapper {
-        background: linear-gradient(135deg, #667eea 0%, #1e3a8a 100%) !important;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e3a8a 100%) !important;
         box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
     }
 
@@ -186,7 +186,7 @@
     /* Mobile responsiveness */
     @media (max-width: 768px) {
         .sidebar-wrapper {
-            background: linear-gradient(135deg, #667eea 0%, #1e3a8a 100%) !important;
+               background: linear-gradient(135deg, #1e3a8a 0%, #1e3a8a 100%) !important;
         }
         
         .sidebar-link {
@@ -218,7 +218,7 @@
 
     /* Enhanced Header Styling */
     .page-header {
-        background: linear-gradient(135deg, #667eea 0%, #1e3a8a 100%) !important;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e3a8a 100%) !important;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
         border-bottom: none !important;
         position: relative !important;

@@ -22,6 +22,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
         return view('admin.registration.view');
     });
 
+
     Route::get('/patient/view', function () {
         return view('admin.patient.view');
     });
@@ -31,6 +32,9 @@ Route::prefix('admin')->as('admin.')->group(function () {
     Route::get('/patient/index', function () {
         return view('admin.patient.index');
     });
+Route::get('/patient/update', function () {
+    return view('admin.patient.update');
+});
 
     Route::get('/version/index', function () {
         return view('admin.version.index');
@@ -43,6 +47,13 @@ Route::prefix('admin')->as('admin.')->group(function () {
     });
 
     Route::resource('hospital', HospitalController::class);
+});
+
+Route::get('/registered/list', function () {
+    return view('admin.registeredhospitals.index');
+});
+Route::get('/registered/view', function () {
+    return view('admin.registeredhospitals.show');
 });
 
 

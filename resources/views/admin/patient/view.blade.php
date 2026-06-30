@@ -105,7 +105,7 @@
             <div class="col-12 col-sm-6">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href=""><i data-feather="home"></i></a>
+                        <a href=""><i class="fa-solid fa-house"></i></a>
                     </li>
                    
                     <li class="breadcrumb-item active">Patient Details</li>
@@ -125,17 +125,53 @@
                     <p class="section-heading"><i class="bi bi-person-fill me-1"></i>Patient Information</p>
                     <table class="table detail-table table-bordered mb-0">
                         <tr>
-                            <th>Patient ID</th>
-                            <td>PID-001</td>
+                            <th>Date of Admission</th>
+                            <td>07-06-2026</td>
                         </tr>
                        
                         <tr>
-                            <th>Name</th>
+                            <th>Time of Presentation</th>
+                            <td>10:00PM</td>
+                        </tr>
+                        <tr>
+                            <th>Sex</th>
+                            <td>Male</td>
+                        </tr>
+                        <tr>
+                            <th>Age</th>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <th>Chief complaints</th>
                             <td>Test</td>
                         </tr>
                         <tr>
-                            <th>Gender</th>
-                            <td>Male</td>
+                            <th>Diagnosis</th>
+                            <td>Test</td>
+                        </tr>
+                        <tr>
+                            <th>Symptom Duration</th>
+                            <td>Test</td>
+                        </tr>
+                        <tr>
+                            <th>Comorbidities(CC INDEX)</th>
+                            <td>Test</td>
+                        </tr>
+                        <tr>
+                            <th>Any comorbidity (<5 years)</th>
+                            <td>Test</td>
+                        </tr>
+                        <tr>
+                            <th>Previously ill requiring admission last 3 months?</th>
+                            <td>Test</td>
+                        </tr>
+                        <tr>
+                            <th>Previously received any antibiotic last 3 months?</th>
+                            <td>Test</td>
+                        </tr>
+                        <tr>
+                            <th>Direct admission here or referred here?</th>
+                            <td>Test</td>
                         </tr>
                     </table>
                 </div>

@@ -12,7 +12,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a class="home-item" href="">
-                                <i data-feather="home"></i>
+                                <i class="fa-solid fa-house"></i>
                             </a>
                         </li>
                         <li class="breadcrumb-item"> Patient List</li>
@@ -37,9 +37,9 @@
                         <thead>
                             <tr>
                                 <th style="width:5%">Sl.No</th>
-                                <th style="white-space:nowrap">Patient ID</th>
-                                <th style="white-space:nowrap">Name</th>
-                                <th style="white-space:nowrap">Gender</th>
+                                <th style="white-space:nowrap">Date of Admission</th>
+                                <th style="white-space:nowrap">Time of Presentation</th>
+                                <th style="white-space:nowrap">Sex</th>
                                 <th style="width:10%">Action</th>
                             </tr>
                         </thead>
@@ -47,14 +47,21 @@
 
                             <tr>
                                 <td>01</td>
-                                <td>PID-001</td>
-                                <td>John Doe</td>
+                                <td>07-06-2026</td>
+                                <td>10:00PM</td>
                                 <td>Male</td>
 
-                                <td>
-                                    <a href="{{ url('/patient/view') }}" class="btn btn-primary btn-sm">
-                                        <i class="bi bi-eye me-1"></i> View
+                                <td class="d-flex flex-row gap-1">
+                                    <a href="{{ url('/patient/view') }}" class="btn btn-primary btn-sm d-flex flex-row ">
+                                        <i class="bi bi-eye me-1"></i> <span>View</span>
                                     </a>
+                                    <a href="{{ url('/patient/create') }}" class="btn btn-warning btn-sm d-flex flex-row">
+                                        <i class="bi bi-eye me-1"></i> <span>Edit</span>
+                                    </a>
+                                    <a href="{{ url('/patient/update') }}" class="btn btn-info btn-sm d-flex flex-row">
+                                        <i class="bi bi-eye me-1"></i> <span>Update</span>
+                                    </a>
+                                  
                                 </td>
                             </tr>
 

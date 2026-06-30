@@ -19,14 +19,19 @@
                     </li>
 
 
-                    <li class="sidebar-list mb-2"><a class="sidebar-link sidebar-title link-nav text-white" href="{{ url('/admin/dashboard') }}">
+                    <li class="sidebar-list mb-2"><a class="sidebar-link sidebar-title link-nav text-white" href="{{ url('/dashboard') }}">
                             <span class="text-white"><i class="bi bi-house-door-fill"></i></span>
                             <span class="text-white">Dashboard</span></a>
                     </li>
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav text-white {{ request()->is('admin/patient/index') ? 'active1' : '' }}"
-                            href="{{ url('admin/patient/index') }}" >
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav text-white {{ request()->routeIs('patient/index') ? 'active1' : '' }}"
+                            href="{{ url('patient/index') }}" >
                             <span class="text-white"><i class="bi bi-person"></i></span>
                             <span class="text-white">Add Patient</span></a>
+                    </li>
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav text-white {{ request()->routeIs('registered/list') ? 'active' : '' }}"
+                            href="{{ url('registered/list') }}" >
+                            <span class="text-white"><i class="bi bi-person"></i></span>
+                            <span class="text-white">Registered Hospitals</span></a>
                     </li>
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title d-flex flex-row gap-2 text-white"
                             href="#">
@@ -70,6 +75,12 @@
 </div>
 
 <style>
+    .sidebar-link.active {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%) !important;
+    border-color: #ff6b6b !important;
+    color: #ffffff !important;
+    box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4) !important;
+}
     .page-wrapper.compact-wrapper .page-body-wrapper .page-body {
         margin-top: 0px;
     }
