@@ -138,6 +138,20 @@
                     <div class="row">
 
                         <div class="mb-3 col-lg-4 col-12">
+                            <label class="form-label mb-0">Hospital code</label>
+                            <input class="form-control" type="text" name="Date_admission" placeholder="Enter Hospital code">
+                            <div class="invalid-feedback">
+                                Please enter Hospital code
+                            </div>
+                        </div>
+                        <div class="mb-3 col-lg-4 col-12">
+                            <label class="form-label mb-0">UHID/Rgen No.</label>
+                            <input class="form-control" type="text" name="Date_admission" placeholder="Enter UHID/Rgen No.">
+                            <div class="invalid-feedback">
+                                Please enter UHID/Rgen No.
+                            </div>
+                        </div>
+                        <div class="mb-3 col-lg-4 col-12">
                             <label class="form-label mb-0">Date of Admission</label>
                             <input class="form-control" type="date" name="Date_admission" placeholder="dd-mm-yyyy">
                             <div class="invalid-feedback">

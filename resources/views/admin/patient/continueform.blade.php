@@ -1,1808 +1,1464 @@
 @extends('admin.layout.app')
 
 @section('title')
-    Patient Form
+Patient Form
 @endsection
 
 @section('style')
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- SweetAlert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <style>
-        body {
-            background: #f2f6ff;
-        }
-
-
-        .main-card {
-
-            margin-top: 70px;
-            background: #fff;
-            padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, .15);
-
-        }
+<style>
+body {
+    background: #f2f6ff;
+}
 
 
-        .tab-btn {
+.main-card {
 
-            min-width: 180px;
-            border-radius: 50px;
-            padding: 14px 25px;
-            font-weight: 600;
-            transition: .3s;
+    margin-top: 70px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, .15);
 
-        }
-
-
-        .tab-btn:hover {
-
-            transform: translateY(-7px);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, .2);
-
-        }
+}
 
 
+.tab-btn {
 
-        .form-card {
+    min-width: 180px;
+    border-radius: 50px;
+    padding: 14px 25px;
+    font-weight: 600;
+    transition: .3s;
 
-            display: none;
-            margin-top: 35px;
-            animation: slide .5s ease;
-
-        }
+}
 
 
-        .form-card.active {
+.tab-btn:hover {
 
-            display: block;
+    transform: translateY(-7px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .2);
 
-        }
+}
 
 
 
-        @keyframes slide {
+.form-card {
 
-            from {
+    display: none;
+    margin-top: 35px;
+    animation: slide .5s ease;
 
-                opacity: 0;
-                transform: translateY(30px);
+}
 
-            }
 
-            to {
+.form-card.active {
 
-                opacity: 1;
-                transform: translateY(0);
+    display: block;
 
-            }
-
-        }
+}
 
 
 
-        .inner-card {
+@keyframes slide {
 
-            background: #f8faff;
-            padding: 20px;
-            border-radius: 20px;
+    from {
 
-        }
+        opacity: 0;
+        transform: translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+
+}
 
 
 
-        .form-control {
+.inner-card {
 
-            border-radius: 5px;
+    background: #f8faff;
+    padding: 20px;
+    border-radius: 20px;
 
-        }
-    </style>
+}
+
+
+
+.form-control {
+
+    border-radius: 5px;
+
+}
+</style>
 @endsection
 
 @section('content')
 
-    <div class="container-fluid">
-        <div class="page-title">
-            <div class="row d-flex justify-content-end">
-                <div class="col-12 col-sm-6">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a class="home-item" href="">
-                                <i class="fa-solid fa-house"></i>
-                            </a>
-                        </li>
-                        <li class="breadcrumb-item">Update Patient</li>
-                    </ol>
-                </div>
+<div class="container-fluid">
+    <div class="page-title">
+        <div class="row d-flex justify-content-end">
+            <div class="col-12 col-sm-6">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a class="home-item" href="">
+                            <i class="fa-solid fa-house"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">Update Patient</li>
+                </ol>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="">
-        <div class="card">
+<div class="">
+    <div class="card">
 
-            <div class="card-body">
+        <div class="card-body">
 
-                <div class="">
+            <div class="">
 
-                    <!-- BUTTONS -->
+                <!-- BUTTONS -->
 
-                    <div class="d-flex justify-content-center gap-3 flex-wrap">
-
-
-
-                        <button class="btn btn-primary tab-btn" onclick="openForm('lab')">
-
-                            <i class="fa-solid fa-flask me-2"></i>
-                            Day 1 Hemat & Biochem lab values
-
-                        </button>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
 
 
 
+                    <button class="btn btn-primary tab-btn" onclick="openForm('lab')">
 
-                        <button class="btn btn-success tab-btn" onclick="openForm('micro')">
+                        <i class="fa-solid fa-flask me-2"></i>
+                        SERIAL LAB
 
-                            <i class="fa-solid fa-microchip me-2"></i>
-                            Antibiotic sensitivity
-
-                        </button>
+                    </button>
 
 
 
 
-                        <button class="btn btn-danger tab-btn" onclick="openForm('ramaiah')">
+                    <button class="btn btn-success tab-btn" onclick="openForm('micro')">
+                        <i class="fa-solid fa-microchip me-2"></i>
+                        MIC MICRO
+                    </button>
+                </div>
 
-                            <i class="fa-solid fa-building me-2"></i>
-                            Day 3 hemat & Biochem lab values
-
-                        </button>
-                        <!-- <button class="btn btn-danger tab-btn" onclick="openForm('patient')">
-
-                                <i class="fa-solid fa-building me-2"></i>
-                                Patient
-
-                            </button> -->
+                <!-- LAB FORM -->
+                <div id="lab" class="form-card active">
 
 
+                    <div class="inner-card">
 
-                    </div>
 
-
+                        <h4 class="text-primary mb-4 text-center">
+                            <b>SERIAL LAB </b>
+                        </h4>
 
 
 
+                        <form class="needs-validation" novalidate onsubmit="submitForm(event)">
 
 
+                            <div class="d-flex row m-0">
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label for=" mb-0" style="margin-bottom: 0px !important;" class="form-label">
+                                        Lab Parameters
+                                    </label>
 
-                    <!-- LAB FORM -->
+                                    <input class="form-control" type="text" name="" placeholder="Enter Lab Parameters">
 
-
-                    <div id="lab" class="form-card active">
-
-
-                        <div class="inner-card">
-
-
-                            <h4 class="text-primary mb-4 text-center">
-                                <b>Day 1 Hemat & Biochem lab values </b>
-                            </h4>
-
-
-
-                            <form class="needs-validation" novalidate onsubmit="submitForm(event)">
-
-
-                                <div class="d-flex row m-0">
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label for=" mb-0" style="margin-bottom: 0px !important;" class="form-label">
-                                            Blood cultuture result
-                                        </label>
-
-                                        <input class="form-control" type="text" name="patient_id"
-                                            placeholder="Enter Blood cultuture result">
-
-                                        <div class="invalid-feedback">
-                                            Please enter your Blood cultuture result
-                                        </div>
+                                    <div class="invalid-feedback">
+                                        Please enter lab parameters
                                     </div>
+                                </div>
 
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label for="f1-last-name mb-0" style="margin-bottom: 0px !important;"
-                                            class="form-label">
-                                            Blood culture flagged positive date
-                                        </label>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label for="f1-last-name mb-0" style="margin-bottom: 0px !important;"
+                                        class="form-label">
+                                        WBC TC
+                                    </label>
 
-                                        <input class="form-control" id="f1-last-name" type="date" name="wbc_tc"
-                                            placeholder="dd-mm-yyyy">
+                                    <input class="form-control" id="" type="number" name="" placeholder="Enter WBC TC">
 
-                                        <div class="invalid-feedback">
-                                            Please enter Blood culture flagged positive date
-                                        </div>
+                                    <div class="invalid-feedback">
+                                        Please enter WBC TC
                                     </div>
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label for="f1-last-name mb-0" style="margin-bottom: 0px !important;"
-                                            class="form-label">
-                                            Blood culture flagged positive time
-                                        </label>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label for="f1-last-name mb-0" style="margin-bottom: 0px !important;"
+                                        class="form-label">
+                                        BANDS/Left shift
+                                    </label>
 
-                                        <input class="form-control" id="f1-last-name" type="time" name="hospital_name"
-                                            placeholder="">
+                                    <input class="form-control" id="f1-last-name" type="text" name=""
+                                        placeholder="Enter BANDS/Left shift">
 
-                                        <div class="invalid-feedback">
-                                            Please enter Blood culture flagged positive time
-                                        </div>
+                                    <div class="invalid-feedback">
+                                        Please enter BANDS/Left shift
                                     </div>
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label for="f1-last-name mb-0" style="margin-bottom: 0px !important;"
-                                            class="form-label">
-                                            Antibiotic Changed to after blood culture report
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label for="f1-last-name mb-0" style="margin-bottom: 0px !important;"
+                                        class="form-label">
+                                        NLR
 
-                                        </label>
+                                    </label>
 
-                                        <input class="form-control" id="f1-last-name" type="text" name="date_of_admission"
-                                            placeholder="Enter Antibiotic Changed to after blood culture report">
+                                    <input class="form-control" id="" type="number" name="" placeholder="Enter NLR">
 
-                                        <div class="invalid-feedback">
-                                            Please enter Antibiotic Changed to after blood culture report
-                                        </div>
+                                    <div class="invalid-feedback">
+                                        Please enter NLR
                                     </div>
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label for="f1-last-name mb-0" style="margin-bottom: 0px !important;"
-                                            class="form-label">
-                                            Rapid PCRs on blood culture results
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label for="f1-last-name mb-0" style="margin-bottom: 0px !important;"
+                                        class="form-label">
+                                        Platelets
 
-                                        </label>
+                                    </label>
 
-                                        <input class="form-control" id="f1-last-name" type="time" name="time_of_admission"
-                                            placeholder="Enter Rapid PCRs on blood culture results">
+                                    <input class="form-control" id="f1-last-name" type="number" name=""
+                                        placeholder="Enter Platelets">
 
-                                        <div class="invalid-feedback">
-                                            Please enter Rapid PCRs on blood culture results
-                                        </div>
+                                    <div class="invalid-feedback">
+                                        Please enter Platelets
                                     </div>
-
-
-                                    <div class="mb-3 col-lg-6 col-md-6 col-12">
-                                        <label class="form-label mb-0">Antibiotics change after rapid PCR </label>
-                                        <input type="text" class="form-control" name="nlr"
-                                            placeholder="Enter Antibiotics change after rapid PCR">
-                                        <div class="invalid-feedback">Please enter Antibiotics change after rapid PCR</div>
-                                    </div>
-
-                                    <div class="mb-3 col-lg-6 col-md-6 col-12">
-                                        <label class="form-label mb-0">other Culture growth reported on </label>
-                                        <input type="text" class="form-control" name="platelets"
-                                            placeholder="Enter other Culture growth reported on">
-                                        <div class="invalid-feedback">Please enter other Culture growth reported on</div>
-                                    </div>
-
-                                    <div class="mb-3 col-lg-6 col-md-6 col-12">
-                                        <label class="form-label mb-0">Sample from which culture growth reported </label>
-                                        <input type="text" class="form-control" name="hb"
-                                            placeholder="Enter Sample from which culture growth reported">
-                                        <div class="invalid-feedback">Please enter Sample from which culture growth reported
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3 col-lg-6 col-md-6 col-12">
-                                        <label class="form-label mb-0">ESBL/CRE/CRAB/MRSA/VRE </label>
-                                        <input type="text" class="form-control" name="pct"
-                                            placeholder="Enter ESBL/CRE/CRAB/MRSA/VRE">
-                                        <div class="invalid-feedback">Please enter ESBL/CRE/CRAB/MRSA/VRE</div>
-                                    </div>
-
-
-
-
                                 </div>
 
 
-                                <div class="d-flex flex-column align-items-center">
-                                    <button class="btn btn-primary rounded-pill px-4 text-center">
-                                        Submit
-                                    </button>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">Hb </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter Hb">
+                                    <div class="invalid-feedback">Please enter Hb</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">PCT </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter PCT">
+                                    <div class="invalid-feedback">Please enter PCT</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">CRP </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter CRP">
+                                    <div class="invalid-feedback">Please enter CRP</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">S.lactate </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter S.lactate">
+                                    <div class="invalid-feedback">Please enter S.lactate</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">Urea/BUN </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter Urea/BUN">
+                                    <div class="invalid-feedback">Please enter Urea/BUN</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">S. creatinine </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter S. creatinine">
+                                    <div class="invalid-feedback">Please enter S. creatinine</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">AST </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter AST">
+                                    <div class="invalid-feedback">Please enter AST</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">ALT </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter ALT">
+                                    <div class="invalid-feedback">Please enter ALT</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">S.bilurubin </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter S.bilurubin">
+                                    <div class="invalid-feedback">Please enter S.bilurubin</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">Albubin </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter Albubin">
+                                    <div class="invalid-feedback">Please enter Albubin</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">LDH </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter LDH">
+                                    <div class="invalid-feedback">Please enter LDH</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">IL 6/8/10 </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter IL 6/8/10">
+                                    <div class="invalid-feedback">Please enter IL 6/8/10</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">ABG </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter ABG">
+                                    <div class="invalid-feedback">Please enter ABG</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">pH </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter pH">
+                                    <div class="invalid-feedback">Please enter pH</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">PC02 </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter PC02">
+                                    <div class="invalid-feedback">Please enter PC02</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">PO2 </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter PO2">
+                                    <div class="invalid-feedback">Please enter PO2</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">HCO3 </label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter HCO3">
+                                    <div class="invalid-feedback">Please enter HCO3</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">Coagulation profile </label>
+                                    <input type="number" class="form-control" name=""
+                                        placeholder="Enter Coagulation profile">
+                                    <div class="invalid-feedback">Please enter Coagulation profile</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">APTT</label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter APTT">
+                                    <div class="invalid-feedback">Please enter APTT</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">PT</label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter PT">
+                                    <div class="invalid-feedback">Please enter PT</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">INR</label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter INR">
+                                    <div class="invalid-feedback">Please enter INR</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">d-Dimer</label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter d-Dimer">
+                                    <div class="invalid-feedback">Please enter d-Dimer</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">fibrinogen</label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter fibrinogen">
+                                    <div class="invalid-feedback">Please enter fibrinogen</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">Electrolytes</label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter Electrolytes">
+                                    <div class="invalid-feedback">Please enter Electrolytes</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">Na</label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter Na">
+                                    <div class="invalid-feedback">Please enter Na</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">K</label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter K">
+                                    <div class="invalid-feedback">Please enter K</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">Cl</label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter Cl">
+                                    <div class="invalid-feedback">Please enter Cl</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">Bicarbonates</label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter Bicarbonates">
+                                    <div class="invalid-feedback">Please enter Bicarbonates</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">HbA1C</label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter HbA1C">
+                                    <div class="invalid-feedback">Please enter HbA1C</div>
+                                </div>
+                                <div class="mb-3 col-md-3 col-12">
+                                    <label class="form-label mb-0">SpO2</label>
+                                    <input type="number" class="form-control" name="" placeholder="Enter SpO2">
+                                    <div class="invalid-feedback">Please enter SpO2</div>
                                 </div>
 
 
 
 
-                            </form>
 
 
-                        </div>
+                            </div>
 
+
+                            <div class="d-flex flex-column align-items-center">
+                                <button class="btn btn-primary rounded-pill px-4 text-center">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    <!-- MICRO FORM -->
-                    <div id="micro" class="form-card">
-                        <div class="inner-card">
-                            <h4 class="text-success mb-4 text-center">
-                                <b>Antibiotic sensitivity</b>
-                            </h4>
-                            <form class="needs-validation" novalidate onsubmit="submitForm(event)">
-                                <div class="d-flex row m-0">
+
+                </div>
+                <!-- MICRO FORM -->
+                <div id="micro" class="form-card">
+                    <div class="inner-card">
+                        <h4 class="text-success mb-4 text-center">
+                            <b>MIC MICRO</b>
+                        </h4>
+                        <hr>
+                        <form class="needs-validation" novalidate onsubmit="submitForm(event)">
+                            <div class="d-flex flex-column gap-2">
+                                <div>
+                                    <h4 class="text-center"><b>PUS CULTURE</b></h4>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-md-3 col-12"><label class="form-label">Specimen Type</label><select
+                                            class="form-select" name="piptaz_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">UHID(single
+                                            patient)</label><input class="form-control" name="uhidsingle_patient"
+                                            placeholder="Enter UHID(single patient)">
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">Testing Date</label><input
+                                            type="date" class="form-control"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">Organism Name</label><input
+                                            class="form-control" name="organism_name" placeholder="Enter Organism Name">
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">AMOX CLAVULANIC
+                                            ACID</label><input class="form-control" name="amox_clavulanic_acid"
+                                            placeholder="Enter AMOX CLAVULANIC ACID"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">PIPTAZ</label><input
+                                            class="form-control" name="piptaz" placeholder="Enter PIPTAZ"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">PIPTAZ
+                                            Interpretation</label><select class="form-select"
+                                            name="piptaz_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFUROXIME</label><input
+                                            class="form-control" name="cefuroxime" placeholder="Enter CEFUROXIME"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFUROXIME
+                                            Interpretation</label><select class="form-select"
+                                            name="cefuroxime_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFURIOXIME-AXE</label><input
+                                            class="form-control" name="cefurioxime_axe"
+                                            placeholder="Enter CEFURIOXIME-AXE"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFTRIXONE</label><input
+                                            class="form-control" name="ceftrixone" placeholder="Enter CEFTRIXONE"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEF+SULBACTUM</label><input
+                                            class="form-control" name="cefplussulbactum"
+                                            placeholder="Enter CEF+SULBACTUM"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFEPIME</label><input
+                                            class="form-control" name="cefepime" placeholder="Enter CEFEPIME"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFEPIME
+                                            Interpretation</label><select class="form-select"
+                                            name="cefepime_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">ERTAPENEM</label><input
+                                            class="form-control" name="ertapenem" placeholder="Enter ERTAPENEM"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">ERTAPENEM
+                                            Interpretation</label><select class="form-select"
+                                            name="ertapenem_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">IMIPENEM</label><input
+                                            class="form-control" name="imipenem" placeholder="Enter IMIPENEM"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">IMIPENEM
+                                            Interpretation</label><select class="form-select"
+                                            name="imipenem_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">MEROPENEM</label><input
+                                            class="form-control" name="meropenem" placeholder="Enter MEROPENEM"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">MEROPENEM
+                                            Interpretation</label><select class="form-select"
+                                            name="meropenem_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">AMIKACIN</label><input
+                                            class="form-control" name="amikacin" placeholder="Enter AMIKACIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">GENTAMYCIN</label><input
+                                            class="form-control" name="gentamycin" placeholder="Enter GENTAMYCIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CIPROFLOXACIN</label><input
+                                            class="form-control" name="ciprofloxacin" placeholder="Enter CIPROFLOXACIN">
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">TIGECYCLINE</label><input
+                                            class="form-control" name="tigecycline" placeholder="Enter TIGECYCLINE">
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">TIGECYCLINE
+                                            Interpretation</label><select class="form-select"
+                                            name="tigecycline_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">FOSFOMYCIN</label><input
+                                            class="form-control" name="fosfomycin" placeholder="Enter FOSFOMYCIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">FOSFOMYCIN
+                                            Interpretation</label><select class="form-select"
+                                            name="fosfomycin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">COLISTIN</label><input
+                                            class="form-control" name="colistin" placeholder="Enter COLISTIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">COLISTIN
+                                            Interpretation</label><select class="form-select"
+                                            name="colistin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">COTRIMAXAZOLE</label><input
+                                            class="form-control" name="cotrimaxazole" placeholder="Enter COTRIMAXAZOLE">
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CLINDAMYCIN</label><input
+                                            class="form-control" name="clindamycin" placeholder="Enter CLINDAMYCIN">
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFTRIAXONE</label><input
+                                            class="form-control" name="ceftriaxone" placeholder="Enter CEFTRIAXONE">
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFTRIAXONE
+                                            Interpretation</label><select class="form-select"
+                                            name="ceftriaxone_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">COLISTIN</label><input
+                                            class="form-control" name="colistin" placeholder="Enter COLISTIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">COLISTIN
+                                            Interpretation</label><select class="form-select"
+                                            name="colistin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFOTAXIME</label><input
+                                            class="form-control" name="cefotaxime" placeholder="Enter CEFOTAXIME"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFOTAXIME
+                                            Interpretation</label><select class="form-select"
+                                            name="cefotaxime_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFUROXIME</label><input
+                                            class="form-control" name="cefuroxime" placeholder="Enter CEFUROXIME"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFUROXIME
+                                            Interpretation</label><select class="form-select"
+                                            name="cefuroxime_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFTAZIDIME</label><input
+                                            class="form-control" name="ceftazidime" placeholder="Enter CEFTAZIDIME">
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFTAZIDIME
+                                            Interpretation</label><select class="form-select"
+                                            name="ceftazidime_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">DAPTOMCIN</label><input
+                                            class="form-control" name="daptomcin" placeholder="Enter DAPTOMCIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">DAPTOMCIN
+                                            Interpretation</label><select class="form-select"
+                                            name="daptomcin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">DOXYCYYLIN</label><input
+                                            class="form-control" name="doxycyylin" placeholder="Enter DOXYCYYLIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">DOXYCYYLIN
+                                            Interpretation</label><select class="form-select"
+                                            name="doxycyylin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">ERYTHROMYCIN</label><input
+                                            class="form-control" name="erythromycin" placeholder="Enter ERYTHROMYCIN">
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">ERYTHROMYCIN
+                                            Interpretation</label><select class="form-select"
+                                            name="erythromycin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">ERTAPENEM</label><input
+                                            class="form-control" name="ertapenem" placeholder="Enter ERTAPENEM"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">ERTAPENEM
+                                            Interpretation</label><select class="form-select"
+                                            name="ertapenem_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">FLUCTOSINE</label><input
+                                            class="form-control" name="fluctosine" placeholder="Enter FLUCTOSINE"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">FLUCTOSINE
+                                            Interpretation</label><select class="form-select"
+                                            name="fluctosine_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFEPIME</label><input
+                                            class="form-control" name="cefepime" placeholder="Enter CEFEPIME"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFEPIME
+                                            Interpretation</label><select class="form-select"
+                                            name="cefepime_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">FLUCONAZOLE</label><input
+                                            class="form-control" name="fluconazole" placeholder="Enter FLUCONAZOLE">
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">FLUCONAZOLE
+                                            Interpretation</label><select class="form-select"
+                                            name="fluconazole_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">FOSFOMYCIN</label><input
+                                            class="form-control" name="fosfomycin" placeholder="Enter FOSFOMYCIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">FOSFOMYCIN
+                                            Interpretation</label><select class="form-select"
+                                            name="fosfomycin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFOXITIN</label><input
+                                            class="form-control" name="cefoxitin" placeholder="Enter CEFOXITIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFOXITIN
+                                            Interpretation</label><select class="form-select"
+                                            name="cefoxitin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">NITROFURANTOIN</label><input
+                                            class="form-control" name="nitrofurantoin"
+                                            placeholder="Enter NITROFURANTOIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">NITROFURANTOIN
+                                            Interpretation</label><select class="form-select"
+                                            name="nitrofurantoin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">GENTAMICIN</label><input
+                                            class="form-control" name="gentamicin" placeholder="Enter GENTAMICIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">GENTAMICIN
+                                            Interpretation</label><select class="form-select"
+                                            name="gentamicin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">HLG-Gentamicin High Level
+                                            (synICUgy)</label><input class="form-control"
+                                            name="hlg_gentamicin_high_level_synicugy"
+                                            placeholder="Enter HLG-Gentamicin High Level (synICUgy)"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">HLG-Gentamicin High Level
+                                            (synICUgy)
+                                            Interpretation</label><select class="form-select"
+                                            name="hlg_gentamicin_high_level_synicugy_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">ICR-Inducible Clindamycin
+                                            Resistance</label><input class="form-control"
+                                            name="icr_inducible_clindamycin_resistance"
+                                            placeholder="Enter ICR-Inducible Clindamycin Resistance"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">IMIPENEM</label><input
+                                            class="form-control" name="imipenem" placeholder="Enter IMIPENEM"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">IMIPENEM
+                                            Interpretation</label><select class="form-select"
+                                            name="imipenem_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">LEVOFLOXACIN</label><input
+                                            class="form-control" name="levofloxacin" placeholder="Enter LEVOFLOXACIN">
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">LEVOFLOXACIN
+                                            Interpretation</label><select class="form-select"
+                                            name="levofloxacin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">LINEZOLID</label><input
+                                            class="form-control" name="linezolid" placeholder="Enter LINEZOLID"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">LINEZOLID
+                                            Interpretation</label><select class="form-select"
+                                            name="linezolid_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">Micafungin</label><input
+                                            class="form-control" name="micafungin" placeholder="Enter Micafungin"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">Micafungin
+                                            Interpretation</label><select class="form-select"
+                                            name="micafungin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">MEROPENEM</label><input
+                                            class="form-control" name="meropenem" placeholder="Enter MEROPENEM"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">MEROPENEM
+                                            Interpretation</label><select class="form-select"
+                                            name="meropenem_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">MINOCYCLINE</label><input
+                                            class="form-control" name="minocycline" placeholder="Enter MINOCYCLINE">
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">MINOCYCLINE
+                                            Interpretation</label><select class="form-select"
+                                            name="minocycline_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">NETILMYCIN</label><input
+                                            class="form-control" name="netilmycin" placeholder="Enter NETILMYCIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">NETILMYCIN
+                                            Interpretation</label><select class="form-select"
+                                            name="netilmycin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">NORFLOX</label><input
+                                            class="form-control" name="norflox" placeholder="Enter NORFLOX"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">NORFLOX
+                                            Interpretation</label><select class="form-select"
+                                            name="norflox_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">OFLOX</label><input
+                                            class="form-control" name="oflox" placeholder="Enter OFLOX"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">OFLOX
+                                            Interpretation</label><select class="form-select"
+                                            name="oflox_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">OXACILLIN</label><input
+                                            class="form-control" name="oxacillin" placeholder="Enter OXACILLIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">OXACILLIN
+                                            Interpretation</label><select class="form-select"
+                                            name="oxacillin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">Cefoxitin
+                                            Screen</label><input class="form-control" name="cefoxitin_screen"
+                                            placeholder="Enter Cefoxitin Screen"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">PENICILLIN</label><input
+                                            class="form-control" name="penicillin" placeholder="Enter PENICILLIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">PENICILLIN
+                                            Interpretation</label><select class="form-select"
+                                            name="penicillin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">POLYMYXIN B</label><input
+                                            class="form-control" name="polymyxin_b" placeholder="Enter POLYMYXIN B">
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">POLYMYXIN B
+                                            Interpretation</label><select class="form-select"
+                                            name="polymyxin_b_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">RIFAMPICIN</label><input
+                                            class="form-control" name="rifampicin" placeholder="Enter RIFAMPICIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">RIFAMPICIN
+                                            Interpretation</label><select class="form-select"
+                                            name="rifampicin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFO SULBA</label><input
+                                            class="form-control" name="cefo_sulba" placeholder="Enter CEFO SULBA"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">CEFO SULBA
+                                            Interpretation</label><select class="form-select"
+                                            name="cefo_sulba_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">COTRIMOX</label><input
+                                            class="form-control" name="cotrimox" placeholder="Enter COTRIMOX"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">COTRIMOX
+                                            Interpretation</label><select class="form-select"
+                                            name="cotrimox_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">Tetracycline</label><input
+                                            class="form-control" name="tetracycline" placeholder="Enter Tetracycline">
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">Tetracycline
+                                            Interpretation</label><select class="form-select"
+                                            name="tetracycline_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">TEICOPLANIN</label><input
+                                            class="form-control" name="teicoplanin" placeholder="Enter TEICOPLANIN">
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">TEICOPLANIN
+                                            Interpretation</label><select class="form-select"
+                                            name="teicoplanin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">TIGECYCLINE</label><input
+                                            class="form-control" name="tigecycline" placeholder="Enter TIGECYCLINE">
+                                    </div>
+                                    <div class="col-md-3 col-12"><label class="form-label">TIGECYCLINE
+                                            Interpretation</label><select class="form-select"
+                                            name="tigecycline_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">TICACILLIN</label><input
+                                            class="form-control" name="ticacillin" placeholder="Enter TICACILLIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">TICACILLIN
+                                            Interpretation</label><select class="form-select"
+                                            name="ticacillin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">TOBRA</label><input
+                                            class="form-control" name="tobra" placeholder="Enter TOBRA"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">TOBRA
+                                            Interpretation</label><select class="form-select"
+                                            name="tobra_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">PIPTAZ</label><input
+                                            class="form-control" name="piptaz" placeholder="Enter PIPTAZ"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">PIPTAZ
+                                            Interpretation</label><select class="form-select"
+                                            name="piptaz_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">VANCOMYCIN</label><input
+                                            class="form-control" name="vancomycin" placeholder="Enter VANCOMYCIN"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">VANCOMYCIN
+                                            Interpretation</label><select class="form-select"
+                                            name="vancomycin_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+                                    <div class="col-md-3 col-12"><label
+                                            class="form-label">VRC-Voriconazole</label><input class="form-control"
+                                            name="vrc_voriconazole" placeholder="Enter VRC-Voriconazole"></div>
+                                    <div class="col-md-3 col-12"><label class="form-label">VRC-Voriconazole
+                                            Interpretation</label><select class="form-select"
+                                            name="vrc_voriconazole_interpretation">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select></div>
+
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex flex-column gap-2">
+                                <div>
+                                    <h4 class="text-center"><b>URINE CULTURE</b></h4>
+                                </div>
+                                <div class="row g-3 mb-3">
 
                                     <!-- UHID -->
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">MDRO screening </label>
-                                        <input class="form-control" type="text" name="uhid"
-                                            placeholder="Enter MDRO screening">
-                                        <div class="invalid-feedback">Please enter MDRO screening</div>
-                                    </div>
-
-                                    <!-- Specimen Type -->
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">First USG abdomen done on </label>
-                                        <input class="form-control" type="text" name="specimen_type"
-                                            placeholder="Enter First USG abdomen done on">
-                                        <div class="invalid-feedback">Please enter First USG abdomen done on</div>
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">UHID (Single Patient)</label>
+                                        <input type="text" class="form-control" name="uhid" placeholder="Enter UHID">
                                     </div>
 
                                     <!-- Testing Date -->
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">First Chest-X-ray done on </label>
-                                        <input class="form-control" type="date" name="testing_date"
-                                            placeholder="Enter First Chest-X-ray done on">
-                                        <div class="invalid-feedback">Please First Chest-X-ray done on</div>
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">Testing Date</label>
+                                        <input type="date" class="form-control" name="testing_date">
                                     </div>
 
                                     <!-- Organism Name -->
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Chest X-ray findings</label>
-                                        <input class="form-control" type="text" name="organism_name"
-                                            placeholder="Enter Chest X-ray findings">
-                                        <div class="invalid-feedback">Please enter Chest X-ray findings</div>
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">Organism Name</label>
+                                        <input type="text" class="form-control" name="organism_name"
+                                            placeholder="Enter Organism Name">
                                     </div>
 
-                                    <!-- AMPICILLIN MIC -->
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">PET/CT done on </label>
-                                        <input class="form-control" type="text" name="ampicillin_mic"
-                                            placeholder="Enter PET/CT done on">
-                                        <div class="invalid-feedback">Please enter PET/CT done on</div>
+                                    <!-- AMIKACIN -->
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">AMIKACIN</label>
+                                        <select class="form-select" name="amikacin">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
                                     </div>
 
-                                    <!-- AMPICILLIN Interpretation -->
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">PET/CT findings</label>
-                                        <input class="form-control" type="text" name="ampicillin_interpretation"
-                                            placeholder="Enter PET/CT findings">
-                                        <div class="invalid-feedback">Please enter PET/CT findings</div>
+                                    <!-- AMOX CLAV -->
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">AMOX CLAV</label>
+                                        <select class="form-select" name="amox_clav">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
                                     </div>
 
-                                    <!-- AMOX CLAVULANIC ACID -->
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Follow Up CT Scan done on</label>
-                                        <input class="form-control" type="text" name="amox_clavulanic_acid"
-                                            placeholder="Enter Follow Up CT Scan done on">
-                                        <div class="invalid-feedback">Please enter Follow Up CT Scan done on
-                                        </div>
+                                    <!-- CEFEPIME -->
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">CEFEPIME</label>
+                                        <select class="form-select" name="cefepime">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
                                     </div>
 
-                                    <!-- AMOX CLAVULANIC ACID Interpretation -->
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Follow Up CT Scan Findings
-                                        </label>
-                                        <input class="form-control" type="text" name="amox_clavulanic_acid_interpretation"
-                                            placeholder="Enter Follow Up CT Scan Findings">
-                                        <div class="invalid-feedback">Please enter Follow Up CT Scan Findings</div>
+                                    <!-- CEFIXIME -->
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">CEFIXIME</label>
+                                        <select class="form-select" name="cefixime">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
                                     </div>
 
+                                    <!-- CEF + SALBACTAM -->
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">CEF + SALBACTAM</label>
+                                        <select class="form-select" name="cef_salbactam">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- CEFOXITIN -->
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">CEFOXITIN</label>
+                                        <select class="form-select" name="cefoxitin">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- CEFTRIXONE -->
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">CEFTRIXONE</label>
+                                        <select class="form-select" name="ceftrixone">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- CIPROFLOXACIN -->
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">CIPROFLOXACIN</label>
+                                        <select class="form-select" name="ciprofloxacin">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- COLISTIN -->
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">COLISTIN</label>
+                                        <select class="form-select" name="colistin">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- ERTAPENEM -->
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">ERTAPENEM</label>
+                                        <select class="form-select" name="ertapenem">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- FOSFOMYCIN -->
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">FOSFOMYCIN</label>
+                                        <select class="form-select" name="fosfomycin">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- MEROPENEM -->
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">MEROPENEM</label>
+                                        <select class="form-select" name="meropenem">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- NITROFURURANTOIN -->
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">NITROFURURANTOIN</label>
+                                        <select class="form-select" name="nitrofururantoin">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- NORFLOXACIN -->
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">NORFLOXACIN</label>
+                                        <select class="form-select" name="norfloxacin">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- PIP-TAZ -->
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">PIP-TAZ</label>
+                                        <select class="form-select" name="pip_taz">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- COTRIMAXAZOLE -->
+                                    <div class="col-md-3 col-12">
+                                        <label class="form-label">COTRIMAXAZOLE</label>
+                                        <select class="form-select" name="cotrimaxazole">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
 
                                 </div>
-                                <div class="d-flex flex-column align-items-center">
-                                    <button class="btn btn-success rounded-pill px-4">
-                                        Submit
-                                    </button>
+
+                            </div>
+                            <hr>
+                            <div class="d-flex flex-column gap-2">
+                                <div>
+                                    <h4 class="text-center"><b>BLOOD CLUTURE</b></h4>
+                                </div>
+                                <div class="row g-3 mb-3">
+
+                                    <!-- Specimen Type -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">Specimen Type</label>
+                                        <select class="form-select" name="specimen_type">
+                                            <option value="">Select Specimen</option>
+                                            <option>Urine</option>
+                                            <option>Blood</option>
+                                            <option>Pus</option>
+                                            <option>Sputum</option>
+                                            <option>Stool</option>
+                                            <option>CSF</option>
+                                            <option>Swab</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- UHID -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">UHID (Single Patient)</label>
+                                        <input type="text" class="form-control" name="uhid" placeholder="Enter UHID">
+                                    </div>
+
+                                    <!-- Testing Date -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">Testing Date</label>
+                                        <input type="date" class="form-control" name="testing_date">
+                                    </div>
+
+                                    <!-- Organism Name -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">Organism Name</label>
+                                        <input type="text" class="form-control" name="organism_name"
+                                            placeholder="Enter Organism Name">
+                                    </div>
+
+                                    <!-- AMOX CLAV -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">AMOX CLAV</label>
+                                        <select class="form-select" name="amox_clav">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- PIP-TAZ -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">PIP-TAZ</label>
+                                        <select class="form-select" name="pip_taz">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- CEFUROXIME -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">CEFUROXIME</label>
+                                        <select class="form-select" name="cefuroxime">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- CEFUROXIME-AXE -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">CEFUROXIME-AXE</label>
+                                        <select class="form-select" name="cefuroxime_axe">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- CEFTRIAXONE -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">CEFTRIAXONE</label>
+                                        <select class="form-select" name="ceftriaxone">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- CEF-SALBACTAM -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">CEF-SALBACTAM</label>
+                                        <select class="form-select" name="cef_salbactam">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- CEFEPIME -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">CEFEPIME</label>
+                                        <select class="form-select" name="cefepime">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- ERTAPENEM -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">ERTAPENEM</label>
+                                        <select class="form-select" name="ertapenem">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- IMIPENEM -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">IMIPENEM</label>
+                                        <select class="form-select" name="imipenem">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- AMIKACIN -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">AMIKACIN</label>
+                                        <select class="form-select" name="amikacin">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- GENTAMYCIN -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">GENTAMYCIN</label>
+                                        <select class="form-select" name="gentamycin">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- CIPROFLOXACIN -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">CIPROFLOXACIN</label>
+                                        <select class="form-select" name="ciprofloxacin">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- TIGECYCLINE -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">TIGECYCLINE</label>
+                                        <select class="form-select" name="tigecycline">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- FOSFOMYCIN -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">FOSFOMYCIN</label>
+                                        <select class="form-select" name="fosfomycin">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- COLISTIN -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">COLISTIN</label>
+                                        <select class="form-select" name="colistin">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- COTRIMAXAZOLE -->
+                                    <div class=" col-md-3 col-12">
+                                        <label class="form-label">COTRIMAXAZOLE</label>
+                                        <select class="form-select" name="cotrimaxazole">
+                                            <option value="">Select</option>
+                                            <option>S</option>
+                                            <option>I</option>
+                                            <option>R</option>
+                                        </select>
+                                    </div>
+
                                 </div>
 
-                            </form>
-                        </div>
+                            </div>
 
-                    </div>
-                    <!-- RAMAIAH FORM -->
-                    <div id="ramaiah" class="form-card">
-                        <div class="inner-card">
-                            <h4 class="text-danger mb-4 text-center">
-                                <b>Day 3 hemat & Biochem lab values</b>
-                            </h4>
-                            <form class="needs-validation" novalidate onsubmit="submitForm(event)">
-                                <div class="row">
 
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Repeat date/s of chest ray </label>
-                                        <input class="form-control" type="date" name="hospital_code"
-                                            placeholder="Enter repeat date/s of chest ray">
-                                        <div class="invalid-feedback">Please enter repeat date/s of chest ray</div>
-                                    </div>
+                            <div class="d-flex flex-column align-items-center">
+                                <button class="btn btn-success rounded-pill px-4">
+                                    Submit
+                                </button>
+                            </div>
 
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Findings of X ray worsening/better/new changes</label>
-                                        <input class="form-control" type="text" name="uhid_pregn_no"
-                                            placeholder="Enter Findings of X ray worsening/better/new changes">
-                                        <div class="invalid-feedback">Please enter findings of X ray worsening/better/new changes</div>
-                                    </div>
-
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Pleural Tapping(if done) date </label>
-                                        <input class="form-control" type="text" name="date_of_admission"
-                                            placeholder="Enter pleural tapping(if done) date">
-                                        <div class="invalid-feedback">Please enter pleural Tapping(if done) date</div>
-                                    </div>
-
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Plueral fluid culture results</label>
-                                        <input class="form-control" type="text" name="time_of_presentation"
-                                            placeholder="Enter Time of presentation">
-                                        <div class="invalid-feedback">Please enter Time of presentation
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Day of change of antibiotics </label>
-                                        <input class="form-control" type="text" name="age" placeholder="Enter Day of change of antibiotics">
-                                        <div class="invalid-feedback">Please enter Day of change of antibiotics</div>
-                                    </div>
-
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Days of emperical antibiotic therapy </label>
-                                        <input class="form-control" type="text" name="sex" placeholder="Enter days of emperical antibiotic therapy">
-                                        <div class="invalid-feedback">Please enter days of emperical antibiotic therapy</div>
-                                    </div>
-
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Days of definitive antibiotic therapy </label>
-                                        <input class="form-control" type="text" name="chief_complaints"
-                                            placeholder="Enter Chief complaints">
-                                        <div class="invalid-feedback">Please enter days of definitive antibiotic therapy</div>
-                                    </div>
-
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Patient outcome at 7 th day </label>
-                                        <input class="form-control" type="text" name="symptom_duration"
-                                            placeholder="Enter patient outcome at 7 th day">
-                                        <div class="invalid-feedback">Please enter patient outcome at 7 th day</div>
-                                    </div>
-
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Patient outcome at 14 th day</label>
-                                        <input class="form-control" type="text" name="comorbidities__cc_index"
-                                            placeholder="Enter patient outcome at 14 th day">
-                                        <div class="invalid-feedback">Please enter patient outcome at 14 th day
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Patient outcome at 21st day</label>
-                                        <input class="form-control" type="text" name="comorbidities__cc_index"
-                                            placeholder="Enter patient outcome at 21st day">
-                                        <div class="invalid-feedback">Please enter patient outcome at 21st day
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Patient outcome at 28th day</label>
-                                        <input class="form-control" type="text" name="comorbidities__cc_index"
-                                            placeholder="Enter patient outcome at 28th day">
-                                        <div class="invalid-feedback">Please enter patient outcome at 28th day
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Source established? Where?</label>
-                                        <input class="form-control" type="text" name="comorbidities__cc_index"
-                                            placeholder="Enter source established? Where?">
-                                        <div class="invalid-feedback">Please enter source established? Where?
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Days of ICU hospitalization</label>
-                                        <input class="form-control" type="date" name="comorbidities__cc_index"
-                                            placeholder="Enter days of ICU hospitalization">
-                                        <div class="invalid-feedback">Please enter days of ICU hospitalization
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Days of Ward hospitalization</label>
-                                        <input class="form-control" type="date" name="comorbidities__cc_index"
-                                            placeholder="Enter days of ward hospitalization">
-                                        <div class="invalid-feedback">Please enter days of ward hospitalization
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label class="form-label mb-0">Dicharge date</label>
-                                        <input class="form-control" type="date" name="comorbidities__cc_index"
-                                            placeholder="Enter dicharge date">
-                                        <div class="invalid-feedback">Please enter dicharge date
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex flex-column align-items-center">
-                                        <button class="btn btn-danger rounded-pill px-4" type="submit">
-                                            Submit
-                                        </button>
-                                    </div>
-
-                            </form>
-                        </div>
+                        </form>
                     </div>
 
-                    <!-- RAMAIAH FORM -->
-                    <div id="patient" class="form-card">
-                        <div class="inner-card">
-                            <h4 class="text-danger mb-4 text-center">
-                                <b>Patient Form</b>
-                            </h4>
-                            <form class="needs-validation" novalidate onsubmit="submitForm(event)">
-                                <div class="d-flex row m-0 align-items-end">
-                                    <div class="col-lg-6 col-12">
-                                        <div class="mb-3">
-                                            <label class="col-form-label mb-0">Hospital Name</label>
-                                            <select class="js-example-placeholder-multiple col-sm-12" multiple="multiple">
-                                                <option value="AL">Manipal Airport Road</option>
-                                                <option value="WY">Manipal Yeshwanthpur</option>
-                                                <option value="WY">Sparsh Yeshwanthpur</option>
-                                                <option value="WY">MS Ramiah Teaching Hospital</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label for=" mb-0" style="margin-bottom: 0px !important;" class="form-label">
-                                            Patient UHID/MRD
-                                        </label>
-
-                                        <input class="form-control" type="text" name="patient_uhid_mrd"
-                                            placeholder="Enter Patient UHID/MRD">
-
-                                        <div class="invalid-feedback">
-                                            Please enter your patient uhid/mrd
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label for=" mb-0" style="margin-bottom: 0px !important;" class="form-label">
-                                            Date of admission
-
-                                        </label>
-
-                                        <input class="form-control" type="date" name="date_of_admission"
-                                            placeholder="Enter Date of admission">
-
-                                        <div class="invalid-feedback">
-                                            Please enter your date of admission
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label for=" mb-0" style="margin-bottom: 0px !important;" class="form-label">
-                                            Time of admisison
-                                        </label>
-
-                                        <input class="form-control" type="time" name="time_of_admission"
-                                            placeholder="Enter Time of admission">
-
-                                        <div class="invalid-feedback">
-                                            Please enter your time of admission
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-12">
-                                        <div class="mb-3">
-                                            <label class="col-form-label mb-0">q-SOFA SCORE</label>
-                                            <select class="js-example-placeholder-multiple col-sm-12">
-                                                <option value="AL">
-                                                    <2< /option>
-                                                <option value="WY">>2</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-12">
-                                        <div class="mb-3">
-                                            <label class="col-form-label mb-0">NEWS score</label>
-                                            <select class="js-example-placeholder-multiple col-sm-12">
-                                                <option value="AL">
-                                                    <7< /option>
-                                                <option value="WY">>7</option>
-                                                <option value="WY">not done</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-12">
-                                        <div class="mb-3">
-                                            <label class="col-form-label mb-0">MEWS Score</label>
-                                            <select class="js-example-placeholder-multiple col-sm-12">
-                                                <option value="AL">0</option>
-                                                <option value="WY">1</option>
-                                                <option value="WY">2</option>
-                                                <option value="WY">3</option>
-                                                <option value="WY">4</option>
-                                                <option value="WY">5</option>
-                                                <option value="WY">not done</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3 col-lg-6 col-12">
-                                        <label for=" mb-0" style="margin-bottom: 0px !important;" class="form-label">
-                                            Any Comorbidity <5 years </label>
-
-                                                <input class="form-control" type="text" name="any_comorbidity_5_years"
-                                                    placeholder="Enter Any Comorbidity <5 years">
-
-                                                <div class="invalid-feedback">
-                                                    Please enter your any comorbidity <5 years </div>
-                                                </div>
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        Any Comorbidity >5 years
-                                                    </label>
-
-                                                    <input class="form-control" type="text" name="any_comorbidity_5_years"
-                                                        placeholder="Enter Any Comorbidity >5 years">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter your any comorbidity >5 years
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <div class="mb-3">
-                                                        <label class="col-form-label mb-0">Age(in years)</label>
-                                                        <select class="js-example-placeholder-multiple col-sm-12"
-                                                            multiple="multiple">
-                                                            <option value="AL">18-40</option>
-                                                            <option value="WY">41-60</option>
-                                                            <option value="WY">61-80</option>
-                                                            <option value="WY">>80 yrs</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                    <div class="mb-3">
-                                                        <label class="col-form-label mb-0">Gender</label>
-                                                        <select class="js-example-placeholder-multiple col-sm-12"
-                                                            multiple="multiple">
-                                                            <option value="AL">Male</option>
-                                                            <option value="WY">Female</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        CCI Score
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            1-2
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            3-4
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            >=5
-                                                        </label>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <div class="mb-3">
-                                                        <label class="col-form-label mb-0">ICU type
-                                                        </label>
-                                                        <select class="js-example-placeholder-multiple col-sm-12"
-                                                            multiple="multiple">
-                                                            <option value="AL">Medical</option>
-                                                            <option value="WY">Surgical</option>
-                                                            <option value="WY">Cardiac</option>
-                                                            <option value="WY">HDU</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        Chief complaints
-
-                                                    </label>
-
-                                                    <input class="form-control" type="text" name="chief_complaints"
-                                                        placeholder="Cough/breathlessness/cold/sputum/with or without fever etc">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter your chief complaints
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Immunocompromised?
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Diagnoised malignancy on chemotherapy
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Diagnoised malignancy not on chemotherapy
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Post transplant
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Autoimmune disease on steroids
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            On steroids for other causes
-                                                        </label>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <div class="mb-3">
-                                                        <label class="col-form-label mb-0">Fresh admission/transfer from
-                                                            other hospital
-                                                        </label>
-                                                        <select class="js-example-placeholder-multiple col-sm-12"
-                                                            multiple="multiple">
-                                                            <option value="AL">Direct fresh admission</option>
-                                                            <option value="WY">Transfereed from other hospital <5 days on
-                                                                    treatment</option>
-                                                            <option value="WY">Transferred from other hospital >5 days on
-                                                                treatment</option>
-
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                    <div class="mb-3">
-                                                        <label class="col-form-label mb-0">MDRO risk assessment
-                                                        </label>
-                                                        <select class="js-example-placeholder-multiple col-sm-12"
-                                                            multiple="multiple">
-                                                            <option value="AL">Any devices present at admission</option>
-                                                            <option value="WY">Previous hospitalizations in last 3 months
-                                                            </option>
-                                                            <option value="WY">Recieved previous antibiotics in last 3
-                                                                months</option>
-                                                            <option value="WY">Any Previous culture reports grown MDRO/MRSA
-                                                            </option>
-
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                    <div class="mb-3">
-                                                        <label class="col-form-label mb-0">Current Symptom duration
-                                                        </label>
-                                                        <select class="js-example-placeholder-multiple col-sm-12"
-                                                            multiple="multiple">
-                                                            <option value="AL">
-                                                                <7 days</option>
-                                                            <option value="WY">8-14 days</option>
-                                                            <option value="WY">15-30 days</option>
-                                                            <option value="WY">>30 days</option>
-
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        First S. lactate sent time (from admission)
-                                                    </label>
-
-                                                    <input class="form-control" type="time" name="first_s_lactate_sent_time"
-                                                        placeholder="First S. lactate sent time (from admission)">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter First S. lactate sent time (from admission)
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        First S. lactate sent date (from admission)
-                                                    </label>
-
-                                                    <input class="form-control" type="date" name="first_s_lactate_sent_date"
-                                                        placeholder="First S. lactate sent date (from admission)">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter First S. lactate sent date (from admission)
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        First S.lactate value
-                                                    </label>
-
-                                                    <input class="form-control" type="text" name="first_s_lactate_value"
-                                                        placeholder="First S.lactate value">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter First S.lactate value
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        Antibiotic started time (from admission)
-                                                    </label>
-
-                                                    <input class="form-control" type="time" name="antibiotic_started_time"
-                                                        placeholder="Antibiotic started time (from admission)">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter Antibiotic started time (from admission)
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        Name of antibiotic with Dose (List all as 1, 2, 3)
-                                                    </label>
-
-                                                    <input class="form-control" type="text" name="antibiotic_with_dose"
-                                                        placeholder="">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter Name of antibiotic with Dose (List all as 1, 2, 3)
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        Blood cultures drawn time(from admission)
-                                                    </label>
-
-                                                    <input class="form-control" type="time" name="blood_cultures_drawn_time"
-                                                        placeholder="Blood cultures drawn time(from admission)">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter Blood cultures drawn time(from admission)
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Crystalloid given
-
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Yes
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            No
-                                                        </label>
-                                                    </div>
-
-
-                                                </div>
-
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        Crystalloid started time
-                                                    </label>
-
-                                                    <input class="form-control" type="time" name="crystalloid_started_time"
-                                                        placeholder="Crystalloid started time">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter Crystalloid started time
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Which crystalloid?
-
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Normal Saline
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Ringer Lactate
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            5% D5W
-                                                        </label>
-                                                    </div>
-
-
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Inotropes Given
-
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Yes
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            No
-                                                        </label>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        Which Inotropes is given
-                                                    </label>
-
-                                                    <input class="form-control" type="text" name="which_inotropes_given"
-                                                        placeholder="Enter Which Inotropes is given">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter which inotropes is given
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        Inotropes given for
-                                                    </label>
-
-                                                    <input class="form-control" type="text" name="inotropes_given_for"
-                                                        placeholder="Enter Inotropes given for">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter inotropes given for
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Organ dysfunction
-
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Renal
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Cardiac
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Hematology
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Metabolic
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Liver
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            None
-                                                        </label>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Clinical Outcome on this episode
-
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Survived
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Expired
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Outcome Pending
-                                                        </label>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Final Sepsis diagnosis
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Clincial
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Culture proven
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Probable
-                                                        </label>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Antibiotics changed after day 3 cultures?
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Yes
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            No, continued the same
-                                                        </label>
-                                                    </div>
-
-
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Total duration antibiotics
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            7 days
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            10 days
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            14 days
-                                                        </label>
-                                                    </div>
-
-
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Septic shock at presentation
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Yes
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            No
-                                                        </label>
-                                                    </div>
-
-
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Vasopresser used or not?
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Yes
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            No
-                                                        </label>
-                                                    </div>
-
-
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Which Vasopressor?
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Nor-adrenaline
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Epinehrine
-                                                        </label>
-                                                    </div>
-
-
-                                                </div>
-
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        Dose and duration of vasopressor
-                                                    </label>
-
-                                                    <input class="form-control" type="text" name="dose_duration_vasopressor"
-                                                        placeholder="Enter Dose and duration of vasopressor">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter dose and duration of vasopressor
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Dialysis/renal support RRT
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Yes
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            No
-                                                        </label>
-                                                    </div>
-
-
-                                                </div>
-
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        No. of times dialyzed during ICU stay
-                                                    </label>
-
-                                                    <input class="form-control" type="text" name="no_times_dialyzed"
-                                                        placeholder="Enter No. of times dialyzed during ICU stay">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter no of times dialyzed during ICU stay
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Lungs condition
-
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Mechanical ventilation
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            NIV/HFNC
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            O2
-                                                        </label>
-                                                    </div>
-
-
-                                                </div>
-
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        No of days above
-                                                    </label>
-
-                                                    <input class="form-control" type="text" name="no_days_above"
-                                                        placeholder="Enter No of days above">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter no of days above
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Immunotherapy given or not? If yes, write name, dose in others
-                                                        option
-
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Yes
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            No
-                                                        </label>
-                                                    </div>
-
-
-
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Steroids used?
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Yes
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            No
-                                                        </label>
-                                                    </div>
-
-
-
-                                                </div>
-
-
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        1st Chest X-ray done date
-                                                    </label>
-
-                                                    <input class="form-control" type="date"
-                                                        name="first_chest_xray_done_date"
-                                                        placeholder="1st Chest X-ray done date">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter 1st Chest X-ray done date
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        1st Chest X-ray findings
-                                                    </label>
-
-                                                    <input class="form-control" type="text" name="first_chest_xray_findings"
-                                                        placeholder="Enter 1st Chest X-ray findings">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter 1st Chest X-ray findings
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        2nd chest X-ray done date
-                                                    </label>
-
-                                                    <input class="form-control" type="date"
-                                                        name="second_chest_xray_done_date"
-                                                        placeholder="2nd chest X-ray done date">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter 2nd chest X-ray done date
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Comparitative finding in 2nd from 1st chest X-ray
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Better
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            worsening
-                                                        </label>
-                                                    </div>
-
-
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        USG Abdomen done or not?
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Yes
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            No
-                                                        </label>
-                                                    </div>
-
-
-                                                </div>
-
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        USG abdomen done date
-                                                    </label>
-
-                                                    <input class="form-control" type="date" name="usg_abdomen_done_date"
-                                                        placeholder="USG abdomen done date">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter USG abdomen done date
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        USG abdomen findings
-                                                    </label>
-
-                                                    <input class="form-control" type="text" name="usg_abdomen_findings"
-                                                        placeholder="USG abdomen findings">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter USG abdomen findings
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        2nd USG abdomen done date
-                                                    </label>
-
-                                                    <input class="form-control" type="date"
-                                                        name="second_usg_abdomen_done_date"
-                                                        placeholder="2nd USG abdomen done date">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter 2nd USG abdomen done date
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Report of 2nd USG compared to 1st
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Worse
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Better
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Not commented in report
-                                                        </label>
-                                                    </div>
-
-
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        CT/MR which organ
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Lung
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Abdomen
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Brain
-                                                        </label>
-                                                    </div>
-
-
-                                                </div>
-
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        1st CT /MR done date and time
-                                                    </label>
-
-                                                    <input class="form-control" type="text"
-                                                        name="first_ct_mr_done_date_time"
-                                                        placeholder="1st CT /MR done date and time">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter 1st CT /MR done date and time
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        CT/MR findings
-                                                    </label>
-
-                                                    <input class="form-control" type="text" name="ct_mr_findings"
-                                                        placeholder="CT/MR findings">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter CT/MR findings
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        Any other radiology tests? Date, time, result
-                                                    </label>
-
-                                                    <input class="form-control" type="text" name="any_other_radiology_tests"
-                                                        placeholder="Any other radiology tests? Date, time, result">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter Any other radiology tests? Date, time, result
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Blood cultures sent or not till 5 days?
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Yes
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            No
-                                                        </label>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Blood culture at 5 days
-
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Growth present
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Sterile
-                                                        </label>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        Blood culture fagged positive date and time
-                                                    </label>
-
-                                                    <input class="form-control" type="text"
-                                                        name="blood_culture_fagged_positive_date_time"
-                                                        placeholder="Blood culture fagged positive  date and time">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter Blood culture fagged positive date and time
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Bio Fire done for positive blood culture?
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Yes
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            No
-                                                        </label>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="mb-3 col-lg-6 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        Biofire report(name of pathogen, genes, reported date and time)
-                                                    </label>
-
-                                                    <input class="form-control" type="text" name="biofire_report"
-                                                        placeholder="Biofire report(name of pathogen, genes, reported date and time)">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter Biofire report(name of pathogen, genes, reported date
-                                                        and time)
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <label class="form-label d-block">
-                                                        Did antibiotics change after BioFire report(check date-day)
-                                                    </label>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            Yes
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="patient">
-                                                        <label class="form-check-label">
-                                                            No
-                                                        </label>
-                                                    </div>
-
-
-                                                </div>
-
-                                                <div class="col-lg-6 col-12">
-                                                    <div class="mb-3">
-                                                        <label class="col-form-label mb-0">If growth on 3rd day, What is
-                                                            growing in Blood culture</label>
-                                                        <select class="js-example-placeholder-multiple col-sm-12"
-                                                            multiple="multiple">
-                                                            <option value="AL">E.coli</option>
-                                                            <option value="WY">Klebsiella pneumoniae</option>
-                                                            <option value="WY">Klebsiella oxytoca</option>
-                                                            <option value="WY">Ps. aeruginosa</option>
-                                                            <option value="WY">S. aureus</option>
-                                                            <option value="WY">Enterobacter Spp</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                    <div class="mb-3">
-                                                        <label class="col-form-label mb-0">What Other cultures sent</label>
-                                                        <select class="js-example-placeholder-multiple col-sm-12"
-                                                            multiple="multiple">
-                                                            <option value="AL">Sputum</option>
-                                                            <option value="WY">BAL</option>
-                                                            <option value="WY">Urine</option>
-                                                            <option value="WY">pleural fluid</option>
-                                                            <option value="WY">Wound swab/tissue/exudate</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-12">
-                                                    <div class="mb-3">
-                                                        <label class="col-form-label mb-0">If growth in other cultures, what
-                                                            organism?</label>
-                                                        <select class="js-example-placeholder-multiple col-sm-12"
-                                                            multiple="multiple">
-                                                            <option value="AL">E.coli</option>
-                                                            <option value="WY">Klebsiella pneumoniae</option>
-                                                            <option value="WY">Klebsiella oxytoca</option>
-                                                            <option value="WY">Proteus Spp</option>
-                                                            <option value="WY">Ps. aeruginosa</option>
-                                                            <option value="WY">S. aureus</option>
-                                                            <option value="WY">S. pneumoniae</option>
-                                                            <option value="WY">Enterobacter Spp</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-
-                                    </div>
-                                    <div class="d-flex flex-column align-items-center">
-                                        <button class="btn btn-danger rounded-pill px-4" type="submit">
-                                            Submit
-                                        </button>
-                                    </div>
-                            </form>
-                        </div>
-                    </div>
                 </div>
+             
             </div>
         </div>
     </div>
+</div>
 
 @endsection
 
 @section('script')
 
-    <script>
-        // Change Forms
-        function openForm(id) {
-            document.querySelectorAll('.form-card')
-                .forEach(form => {
+<script>
+// Change Forms
+function openForm(id) {
+    document.querySelectorAll('.form-card')
+        .forEach(form => {
 
-                    form.classList.remove('active');
+            form.classList.remove('active');
 
-                });
-            document.getElementById(id)
-                .classList.add('active');
-        }
-        // Validation + SweetAlert
+        });
+    document.getElementById(id)
+        .classList.add('active');
+}
+// Validation + SweetAlert
 
-        function submitForm(event) {
-            event.preventDefault();
-            let form = event.target;
-            if (!form.checkValidity()) {
-                form.classList.add('was-validated');
-                return;
-            }
-            Swal.fire({
+function submitForm(event) {
+    event.preventDefault();
+    let form = event.target;
+    if (!form.checkValidity()) {
+        form.classList.add('was-validated');
+        return;
+    }
+    Swal.fire({
 
-                icon: 'success',
+        icon: 'success',
 
-                title: 'Submitted Successfully',
+        title: 'Submitted Successfully',
 
-                text: 'Your details saved successfully',
+        text: 'Your details saved successfully',
 
-                showConfirmButton: false,
+        showConfirmButton: false,
 
-                timer: 2000
+        timer: 2000
 
-            });
-            form.reset();
-            form.classList.remove('was-validated');
-        }
-    </script>
+    });
+    form.reset();
+    form.classList.remove('was-validated');
+}
+</script>
 
 @endsection
