@@ -1,38 +1,37 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\HospitalController;
 
 
 
-Route::get('/', function () {
-    return view('admin.dashboard');
-});
+Route::prefix('admin')->as('admin.')->group(function () {
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    });
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-});
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    });
 
-Route::get('/home', function () {
-    return view('frontend.index');
-});
-Route::get('/registration', function () {
-    return view('admin.registration.index');
-});
+    Route::get('/registration', function () {
+        return view('admin.registration.index');
+    });
 
-Route::get('/registration/view', function () {
-    return view('admin.registration.view');
-});
+    Route::get('/registration/view', function () {
+        return view('admin.registration.view');
+    });
 
 
-Route::get('/patient/view', function () {
-    return view('admin.patient.view');
-});
-Route::get('/patient/create', function () {
-    return view('admin.patient.create');
-});
-Route::get('/patient/index', function () {
-    return view('admin.patient.index');
-});
+    Route::get('/patient/view', function () {
+        return view('admin.patient.view');
+    });
+    Route::get('/patient/create', function () {
+        return view('admin.patient.create');
+    });
+    Route::get('/patient/index', function () {
+        return view('admin.patient.index');
+    });
 Route::get('/patient/update', function () {
     return view('admin.patient.update');
 });
@@ -40,27 +39,17 @@ Route::get('/patient/continueform', function () {
     return view('admin.patient.continueform');
 });
 
+    Route::get('/version/index', function () {
+        return view('admin.version.index');
+    });
+    Route::get('/version/view', function () {
+        return view('admin.version.view');
+    });
+    Route::get('/version/create', function () {
+        return view('admin.version.create');
+    });
 
-
-Route::get('/version/index', function () {
-    return view('admin.version.index');
-});
-Route::get('/version/view', function () {
-    return view('admin.version.view');
-});
-Route::get('/version/create', function () {
-    return view('admin.version.create');
-});
-
-
-Route::get('/hospital/index', function () {
-    return view('admin.hospital.index');
-});
-Route::get('/hospital/view', function () {
-    return view('admin.hospital.view');
-});
-Route::get('/hospital/create', function () {
-    return view('admin.hospital.create');
+    Route::resource('hospital', HospitalController::class);
 });
 
 Route::get('/registered/list', function () {

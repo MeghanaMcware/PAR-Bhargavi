@@ -1,5 +1,5 @@
 @extends('admin.layout.app')
-@section('title') Patient Details @endsection
+@section('title') Hospital Details @endsection
 
 @section('style')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -126,16 +126,19 @@
                     <table class="table detail-table table-bordered mb-0">
                         <tr>
                             <th>Hospital Name</th>
-                            <td>MS Ramiah Memorial</td>
+                            <td>{{ $hospital->name }}</td>
                         </tr>
-                       
                         <tr>
                             <th>Phone No.</th>
-                            <td>98989898989</td>
+                            <td>{{ $hospital->phone }}</td>
                         </tr>
                         <tr>
                             <th>Email</th>
-                            <td>msramiahmemorial@gmail.com</td>
+                            <td>{{ $hospital->email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <td>{{ $hospital->address }}</td>
                         </tr>
                     </table>
                 </div>
@@ -149,8 +152,8 @@
 
     {{-- Back button --}}
     <div class="mt-2 mb-4">
-        <a href="{{ url('/') }}" class="btn btn-secondary text-dark btn-sm mb-3">
-            <i class="bi bi-arrow-left me-1"></i> Back to Patients
+        <a href="{{ route('admin.hospital.index') }}" class="btn btn-secondary text-dark btn-sm mb-3">
+            <i class="bi bi-arrow-left me-1"></i> Back to Hospitals
         </a>
        
     </div>

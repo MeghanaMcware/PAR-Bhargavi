@@ -1,5 +1,5 @@
 @extends('admin.layout.app')
-@section('title') Create Hospital @endsection
+@section('title') Edit Hospital @endsection
 
 @section('style')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -262,17 +262,17 @@
             <div class="row">
                 <div class="col-12 col-sm-6">
                     <h3>
-                        Create Hospital
+                        Edit Hospital
                     </h3>
                 </div>
                 <div class="col-12 col-sm-6">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="">
-                                <i class="fa-solid fa-house"></i>
+                                <i data-feather="home"></i>
                             </a>
                         </li>
-                        <li class="breadcrumb-item">Create</li>
+                        <li class="breadcrumb-item">Edit</li>
                     </ol>
                 </div>
             </div>
@@ -285,12 +285,13 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <form action="{{ route('admin.hospital.store') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        <form action="{{ route('admin.hospital.update', $hospital->id) }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
                             @csrf
+                            @method('PUT')
                             <div class="d-flex row m-0">
                                 <div class="col-lg-4 col-md-6 col-12 mb-3">
                                     <label class="form-label mb-0">Hospital Name <span class="text-danger">*</span></label>
-                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"
+                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $hospital->name) }}"
                                         placeholder="Enter hospital name" required minlength="2" maxlength="100"
                                         oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
                                     @error('name')
@@ -304,7 +305,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-12 mb-3">
                                     <label class="form-label mb-0">Phone No. <span class="text-danger">*</span></label>
-                                    <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}"
+                                    <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone', $hospital->phone) }}"
                                         placeholder="Enter hospital phone number" required minlength="2" maxlength="100">
                                     @error('phone')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -317,7 +318,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-12 mb-3">
                                     <label class="form-label mb-0">Address <span class="text-danger">*</span></label>
-                                    <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}"
+                                    <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address', $hospital->address) }}"
                                         placeholder="Enter hospital address" required minlength="2" maxlength="100"
                                         oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
                                     @error('address')
@@ -341,7 +342,7 @@
                                 </div> -->
                                 <div class="col-lg-4 col-md-6 col-12 mb-3">
                                     <label class="form-label mb-0">Email <span class="text-danger">*</span></label>
-                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}"
+                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $hospital->email) }}"
                                         placeholder="Enter hospital email" required>
                                     @error('email')
                                         <div class="invalid-feedback">{{ $message }}</div>

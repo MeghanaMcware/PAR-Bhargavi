@@ -1,5 +1,5 @@
 @extends('admin.layout.app')
-@section('title') Patient List @endsection
+@section('title') Hospital List @endsection
 @section('style')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -24,7 +24,7 @@
 
     <div class="">
         <div class="d-flex justify-content-start mb-3">
-            <a href="{{ url('/hospital/create') }}" class="btn btn-primary">
+            <a href="{{ route('admin.hospital.create') }}" class="btn btn-primary">
                 <i class="bi bi-plus me-1"></i> Add Hospital
             </a>
         </div>
@@ -46,19 +46,32 @@
                         </thead>
                         <tbody>
 
+                            @foreach($hospitals as $key => $hospital)
                             <tr>
-                                <td>01</td>
-                                <td>MS Ramiah Memorial</td>
-                                <td>98989898989</td>
-                                <td>msramiahmemorial@gmail.com</td>
-                                <td>Address</td>
-
+                                <td>{{ str_pad($key + 1, 2, '0', STR_PAD_LEFT) }}</td>
+                                <td>{{ $hospital->name }}</td>
+                                <td>{{ $hospital->phone }}</td>
+                                <td>{{ $hospital->email }}</td>
+                                <td>{{ $hospital->address }}</td>
                                 <td>
-                                    <a href="{{ url('/hospital/view') }}" class="btn btn-primary btn-sm">
-                                        <i class="bi bi-eye me-1"></i> View
-                                    </a>
+                                    <div class="d-flex gap-2 justify-content-center">
+                                        <a href="{{ route('admin.hospital.show', $hospital->id) }}" class="btn btn-primary btn-sm">
+                                            <i class="bi bi-eye"></i> View
+                                        </a>
+                                        <a href="{{ route('admin.hospital.edit', $hospital->id) }}" class="btn btn-success btn-sm">
+                                            <i class="bi bi-pencil"></i> Edit
+                                        </a>
+                                        <form action="{{ route('admin.hospital.destroy', $hospital->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this hospital?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="bi bi-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
+                            @endforeach
 
                         </tbody>
                     </table>
