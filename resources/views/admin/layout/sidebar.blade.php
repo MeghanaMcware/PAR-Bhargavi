@@ -19,12 +19,12 @@
                     </li>
 
 
-                    <li class="sidebar-list mb-2"><a class="sidebar-link sidebar-title link-nav text-white" href="{{ url('/dashboard') }}">
+                    <li class="sidebar-list mb-2"><a class="sidebar-link sidebar-title link-nav text-white" href="{{ url('/admin/dashboard') }}">
                             <span class="text-white"><i class="bi bi-house-door-fill"></i></span>
                             <span class="text-white">Dashboard</span></a>
                     </li>
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav text-white {{ request()->routeIs('patient/index') ? 'active1' : '' }}"
-                            href="{{ url('patient/index') }}" >
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav text-white {{ request()->is('admin/patient/index') ? 'active1' : '' }}"
+                            href="{{ url('admin/patient/index') }}" >
                             <span class="text-white"><i class="bi bi-person"></i></span>
                             <span class="text-white">Add Patient</span></a>
                     </li>
@@ -37,7 +37,7 @@
 
                             <li>
                                 <a class="sidebar-link sidebar-title link-nav text-white"
-                                    href="{{ url('hospital/index') }}">
+                                    href="{{ route('admin.hospital.index') }}">
                                     <i class="bi bi-building text-white"></i> <span
                                         class="text-white">Hospitals</span>
                                 </a>
@@ -51,7 +51,7 @@
                            
                             <li>
                                 <a class="sidebar-link sidebar-title link-nav text-white"
-                                    href="{{ url('version/index') }}">
+                                    href="{{ url('admin/version/index') }}">
                                     <i class="bi bi-file-earmark-text text-white"></i> <span
                                         class="text-white">Version</span>
                                 </a>
