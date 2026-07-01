@@ -374,7 +374,11 @@
     .page-header {
         animation: slideDown 0.6s ease-out !important;
     }
-
+    .needs-validation label{
+        font-size: 15px !important;
+    font-weight: 500 !important;
+    color: black !important;
+}
     </style>
     @yield('style')
 <style>
