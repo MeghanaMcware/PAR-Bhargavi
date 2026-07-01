@@ -28,9 +28,9 @@
                             <span class="text-white"><i class="bi bi-person"></i></span>
                             <span class="text-white">Add Patient</span></a>
                     </li>
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav text-white {{ request()->routeIs('registered/list') ? 'active' : '' }}"
+                    <!-- <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav text-white {{ request()->routeIs('registered/list') ? 'active' : '' }}"
                             href="{{ url('admin/registered/list') }}" >
-                            <span class="text-white"><i class="bi bi-person"></i></span>
+                            <span class="text-white"><i class="bi bi-person"></i></span> -->
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav text-white {{ request()->routeIs('registered.*') ? 'active' : '' }}"
                             href="{{ route('registered.list') }}" >
                             <span class="text-white"><i class="bi bi-hospital"></i></span>

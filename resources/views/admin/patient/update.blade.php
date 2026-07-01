@@ -137,7 +137,7 @@
 
                     <div class="row mb-3">
 
-                        <div class="mb-3 col-md-3 col-12">
+                        <div class="mb-3 col-md-3 col-12 mb-3">
                             <label class="form-label mb-0">Date of Admission</label>
                             <input class="form-control" type="date" value="test" name="Date_admission"
                                 placeholder="dd-mm-yyyy">
@@ -461,7 +461,7 @@
 
                         <!-- Blood Culture Result -->
                         <div class="col-md-3 col-12">
-                            <label class="form-label">Blood Culture Result</label>
+                            <label class="form-label mb-0">Blood Culture Result</label>
                             <select class="form-select" name="blood_culture_result">
                                 <option value="">Select</option>
                                 <option>Positive</option>
@@ -473,19 +473,19 @@
 
                         <!-- Blood Culture Flagged Positive Date -->
                         <div class="col-md-3 col-12">
-                            <label class="form-label">Blood Culture Flagged Positive Date</label>
+                            <label class="form-label mb-0">Blood Culture Flagged Positive Date</label>
                             <input type="date" class="form-control" name="blood_culture_positive_date">
                         </div>
 
                         <!-- Blood Culture Flagged Positive Time -->
                         <div class="col-md-3 col-12">
-                            <label class="form-label">Blood Culture Flagged Positive Time</label>
+                            <label class="form-label mb-0">Blood Culture Flagged Positive Time</label>
                             <input type="time" class="form-control" name="blood_culture_positive_time">
                         </div>
 
                         <!-- Antibiotic Changed -->
                         <div class="col-md-3 col-12">
-                            <label class="form-label">Antibiotic Changed After Blood Culture Report</label>
+                            <label class="form-label mb-0">Antibiotic Changed After Blood Culture Report</label>
                             <select class="form-select" name="antibiotic_changed">
                                 <option value="">Select</option>
                                 <option>Yes</option>
@@ -495,14 +495,14 @@
 
                         <!-- Rapid PCR Results -->
                         <div class="col-md-3 col-12">
-                            <label class="form-label">Rapid PCRs on Blood Culture Results</label>
+                            <label class="form-label mb-0">Rapid PCRs on Blood Culture Results</label>
                             <textarea class="form-control" name="rapid_pcr_results" rows="2"
                                 placeholder="Enter PCR Results"></textarea>
                         </div>
 
                         <!-- Antibiotics Change After Rapid PCR -->
                         <div class="col-md-3 col-12">
-                            <label class="form-label">Antibiotics Change After Rapid PCR</label>
+                            <label class="form-label mb-0">Antibiotics Change After Rapid PCR</label>
                             <select class="form-select" name="antibiotics_change_after_pcr">
                                 <option value="">Select</option>
                                 <option>Yes</option>
@@ -512,20 +512,20 @@
 
                         <!-- Other Culture Growth Reported On -->
                         <div class="col-md-3 col-12">
-                            <label class="form-label">Other Culture Growth Reported On</label>
+                            <label class="form-label mb-0">Other Culture Growth Reported On</label>
                             <input type="date" class="form-control" name="other_culture_reported_on">
                         </div>
 
                         <!-- Sample From Which Culture Growth Reported -->
                         <div class="col-md-3 col-12">
-                            <label class="form-label">Sample From Which Culture Growth Reported</label>
+                            <label class="form-label mb-0">Sample From Which Culture Growth Reported</label>
                             <input type="text" class="form-control" name="sample_culture_growth"
                                 placeholder="Enter Sample Type">
                         </div>
 
                         <!-- ESBL / CRE / CRAB / MRSA / VRE -->
                         <div class="col-md-3 col-12 mb-3">
-                            <label class="form-label">ESBL / CRE / CRAB / MRSA / VRE</label>
+                            <label class="form-label mb-0">ESBL / CRE / CRAB / MRSA / VRE</label>
                             <select class="form-select" name="resistant_organism">
                                 <option value="">Select</option>
                                 <option>ESBL</option>
@@ -538,8 +538,8 @@
                         </div>
 
                         <!-- MDRO Screening @ Admission Result -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">MDRO Screening @ Admission Result</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">MDRO Screening @ Admission Result</label>
                             <select class="form-select" name="mdro_screening_result">
                                 <option value="">Select</option>
                                 <option>Positive</option>
@@ -550,114 +550,114 @@
                         </div>
 
                         <!-- First USG Abdomen Done On -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">First USG Abdomen Done On</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">First USG Abdomen Done On</label>
                             <input type="date" class="form-control" name="usg_abdomen_date">
                         </div>
 
                         <!-- USG Abdomen Findings -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">USG Abdomen Findings</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">USG Abdomen Findings</label>
                             <textarea class="form-control" name="usg_abdomen_findings" rows="2"
                                 placeholder="Enter USG Abdomen Findings"></textarea>
                         </div>
 
                         <!-- First Chest X-Ray Done On -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">First Chest X-Ray Done On</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">First Chest X-Ray Done On</label>
                             <input type="date" class="form-control" name="chest_xray_date">
                         </div>
 
                         <!-- Chest X-Ray Findings -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">Chest X-Ray Findings</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">Chest X-Ray Findings</label>
                             <textarea class="form-control" name="chest_xray_findings" rows="2"
                                 placeholder="Enter Chest X-Ray Findings"></textarea>
                         </div>
 
                         <!-- PET/CT Done On -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">PET/CT Done On</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">PET/CT Done On</label>
                             <input type="date" class="form-control" name="pet_ct_date">
                         </div>
 
                         <!-- PET/CT Findings -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">PET/CT Findings</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">PET/CT Findings</label>
                             <textarea class="form-control" name="pet_ct_findings" rows="2"
                                 placeholder="Enter PET/CT Findings"></textarea>
                         </div>
 
                         <!-- Follow Up CT Scan Done On -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">Follow Up CT Scan Done On</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">Follow Up CT Scan Done On</label>
                             <input type="date" class="form-control" name="followup_ct_date">
                         </div>
 
                         <!-- Follow Up CT Scan Findings -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">Follow Up CT Scan Findings</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">Follow Up CT Scan Findings</label>
                             <textarea class="form-control" name="followup_ct_findings" rows="2"
                                 placeholder="Enter Follow Up CT Scan Findings"></textarea>
                         </div>
 
                         <!-- Repeat Date(s) of Chest X-Ray -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">Repeat Date(s) of Chest X-Ray</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">Repeat Date(s) of Chest X-Ray</label>
                             <input type="text" class="form-control" name="repeat_chest_xray_dates"
                                 placeholder="e.g. 10/06/2026, 15/06/2026">
                         </div>
 
                         <!-- Findings of X-Ray -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">Findings of X-Ray (Worsening / Better / New Changes)</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">Findings of X-Ray (Worsening / Better / New Changes)</label>
                             <textarea class="form-control" name="xray_findings" rows="2"
                                 placeholder="Enter X-Ray Findings"></textarea>
                         </div>
 
                         <!-- Pleural Tapping Date -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">Pleural Tapping (If Done) Date</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">Pleural Tapping (If Done) Date</label>
                             <input type="date" class="form-control" name="pleural_tapping_date">
                         </div>
 
                         <!-- Pleural Fluid Culture Results -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">Pleural Fluid Culture Results</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">Pleural Fluid Culture Results</label>
                             <textarea class="form-control" name="pleural_fluid_culture" rows="2"
                                 placeholder="Enter Culture Results"></textarea>
                         </div>
 
                         <!-- Day of Change of Antibiotics -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">Day of Change of Antibiotics</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">Day of Change of Antibiotics</label>
                             <input type="number" class="form-control" name="day_antibiotic_change" min="0"
                                 placeholder="Days">
                         </div>
 
                         <!-- Days of Empirical Antibiotic Therapy -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">Days of Empirical Antibiotic Therapy</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">Days of Empirical Antibiotic Therapy</label>
                             <input type="number" class="form-control" name="empirical_antibiotic_days" min="0"
                                 placeholder="Days">
                         </div>
 
                         <!-- Days of Definitive Antibiotic Therapy -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">Days of Definitive Antibiotic Therapy</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">Days of Definitive Antibiotic Therapy</label>
                             <input type="number" class="form-control" name="definitive_antibiotic_days" min="0"
                                 placeholder="Days">
                         </div>
 
                         <!-- Source Established -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">Source Established? Where?</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">Source Established? Where?</label>
                             <input type="text" class="form-control" name="source_established" placeholder="Enter Source">
                         </div>
 
                         <!-- Patient Outcome - Day 7 -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">Patient Outcome at 7th Day</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">Patient Outcome at 7th Day</label>
                             <select class="form-select" name="outcome_day7">
                                 <option value="">Select</option>
                                 <option>Recovered</option>
@@ -669,8 +669,8 @@
                         </div>
 
                         <!-- Patient Outcome - Day 14 -->
-                        <div class="col-md-3 col-12">
-                            <label class="form-label">Patient Outcome at 14th Day</label>
+                        <div class="col-md-3 col-12 mb-3">
+                            <label class="form-label mb-0">Patient Outcome at 14th Day</label>
                             <select class="form-select" name="outcome_day14">
                                 <option value="">Select</option>
                                 <option>Recovered</option>
@@ -683,7 +683,7 @@
 
                         <!-- Patient Outcome - Day 21 -->
                         <div class="col-md-3">
-                            <label class="form-label">Patient Outcome at 21st Day</label>
+                            <label class="form-label mb-0">Patient Outcome at 21st Day</label>
                             <select class="form-select" name="outcome_day21">
                                 <option value="">Select</option>
                                 <option>Recovered</option>
@@ -696,7 +696,7 @@
 
                         <!-- Patient Outcome - Day 28 -->
                         <div class="col-md-3">
-                            <label class="form-label">Patient Outcome at 28th Day</label>
+                            <label class="form-label mb-0">Patient Outcome at 28th Day</label>
                             <select class="form-select" name="outcome_day28">
                                 <option value="">Select</option>
                                 <option>Recovered</option>
@@ -709,19 +709,19 @@
 
                         <!-- ICU Hospitalization -->
                         <div class="col-md-3">
-                            <label class="form-label">Days of ICU Hospitalization</label>
+                            <label class="form-label mb-0">Days of ICU Hospitalization</label>
                             <input type="number" class="form-control" name="icu_days" min="0" placeholder="Days">
                         </div>
 
                         <!-- Ward Hospitalization -->
                         <div class="col-md-3">
-                            <label class="form-label">Days of Ward Hospitalization</label>
+                            <label class="form-label mb-0">Days of Ward Hospitalization</label>
                             <input type="number" class="form-control" name="ward_days" min="0" placeholder="Days">
                         </div>
 
                         <!-- Discharge Date -->
                         <div class="col-md-3 mb-3">
-                            <label class="form-label">Discharge Date</label>
+                            <label class="form-label mb-0">Discharge Date</label>
                             <input type="date" class="form-control" name="discharge_date">
                         </div>
 
