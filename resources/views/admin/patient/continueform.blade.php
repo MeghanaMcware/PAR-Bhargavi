@@ -131,6 +131,30 @@ body {
     font-weight: 500;
     color: black;
 }
+
+/* Sub-tabs inside MIC MICRO */
+.sub-tab-btn {
+    min-width: 160px;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.sub-tab-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, .15);
+}
+
+.micro-subform {
+    display: none;
+    margin-top: 25px;
+    animation: slide .4s ease;
+}
+
+.micro-subform.active {
+    display: block;
+}
 </style>
 @endsection
 
@@ -504,7 +528,24 @@ body {
                         </h4>
                         <hr>
 
+                        <!-- SUB-TABS -->
+                        <div class="d-flex justify-content-center gap-3 flex-wrap mb-2">
+                            <button type="button" class="btn btn-outline-primary sub-tab-btn" onclick="openMicroForm('pusCultureSection')">
+                                <i class="fa-solid fa-vial me-2"></i>
+                                PUS CULTURE
+                            </button>
+                            <button type="button" class="btn btn-outline-primary sub-tab-btn" onclick="openMicroForm('urineCultureSection')">
+                                <i class="fa-solid fa-flask-vial me-2"></i>
+                                URINE CULTURE
+                            </button>
+                            <button type="button" class="btn btn-outline-primary sub-tab-btn" onclick="openMicroForm('bloodCultureSection')">
+                                <i class="fa-solid fa-droplet me-2"></i>
+                                BLOOD CULTURE
+                            </button>
+                        </div>
+
                         <!-- ===================== PUS CULTURE (own form, not nested) ===================== -->
+                        <div id="pusCultureSection" class="micro-subform active">
                         <form class="needs-validation" novalidate onsubmit="submitPusCultureForm(event)" id="pusCultureForm">
                             <div class="d-flex flex-column gap-2">
                                 <div>
@@ -693,18 +734,23 @@ body {
                                     </div>
                                 </div>
                             </div>
+                             <div class="d-flex flex-column align-items-center mt-3">
+                                <button type="button" class="btn btn-success rounded-pill px-4" id="pusFinalSubmitBtn" style="display: none;" onclick="resetSingleMicroTable('pus')">
+                                    PUS CULTURE Final Submit
+                                </button>
+                             </div>
                         </form>
-
-                        <hr>
+                        </div>
 
                         <!-- ===================== URINE CULTURE (own form, sibling, not nested) ===================== -->
+                        <div id="urineCultureSection" class="micro-subform">
                         <form class="needs-validation" novalidate onsubmit="submitUrineCultureForm(event)" id="urineCultureForm">
                             <div class="d-flex flex-column gap-2">
                                 <div>
                                     <h4 class="text-center"><b>URINE CULTURE</b></h4>
                                 </div>
                                 <div class="row g-3 mb-3">
-   <div class="col-md-3 col-12 mb-0"><label class="form-label pt-0 pb-0 mb-0">Day</label><input class="form-control" name="urineday"
+                                <div class="col-md-3 col-12 mb-0"><label class="form-label pt-0 pb-0 mb-0">Day</label><input class="form-control" name="urineday"
                                             placeholder="Enter Day">
                                     </div> 
                                     <!-- UHID -->
@@ -944,18 +990,23 @@ body {
                                     </div>
                                 </div>
                             </div>
+                             <div class="d-flex flex-column align-items-center mt-3">
+                                <button type="button" class="btn btn-success rounded-pill px-4" id="urineFinalSubmitBtn" style="display: none;" onclick="resetSingleMicroTable('urine')">
+                                    URINE CULTURE Final Submit
+                                </button>
+                             </div>
                         </form>
-
-                        <hr>
+                        </div>
 
                         <!-- ===================== BLOOD CULTURE (own form, sibling, not nested) ===================== -->
+                        <div id="bloodCultureSection" class="micro-subform">
                         <form class="needs-validation" novalidate onsubmit="submitBloodCultureForm(event)" id="bloodCultureForm">
                             <div class="d-flex flex-column gap-2">
                                 <div>
                                     <h4 class="text-center"><b>BLOOD CLUTURE</b></h4>
                                 </div>
                                 <div class="row g-3 mb-3">
-   <div class="col-md-3 col-12 mb-0"><label class="form-label pt-0 pb-0 mb-0">Day</label><input class="form-control" name="bloodday"
+                                   <div class="col-md-3 col-12 mb-0"><label class="form-label pt-0 pb-0 mb-0">Day</label><input class="form-control" name="bloodday"
                                             placeholder="Enter Day">
                                     </div> 
                                     <!-- Specimen Type -->
@@ -1211,14 +1262,16 @@ body {
                                         </table>
                                     </div>
                                 </div>
+                                
                             </div>
 
                             <div class="d-flex flex-column align-items-center mt-3">
-                                <button type="button" class="btn btn-success rounded-pill px-4" id="microFinalSubmitBtn" style="display: none;" onclick="resetMicroTable()">
-                                 Final Submit
+                                <button type="button" class="btn btn-success rounded-pill px-4" id="bloodFinalSubmitBtn" style="display: none;" onclick="resetSingleMicroTable('blood')">
+                                 BLOOD CULTURE Final Submit
                                 </button>
                             </div>
                         </form>
+                        </div>
 
                     </div>
 
@@ -1234,13 +1287,23 @@ body {
 @section('script')
 
 <script>
-// Change Forms
+// Change Forms (SERIAL LAB <-> MIC MICRO)
 function openForm(id) {
     document.querySelectorAll('.form-card')
         .forEach(form => {
 
             form.classList.remove('active');
 
+        });
+    document.getElementById(id)
+        .classList.add('active');
+}
+
+// Change sub-tabs inside MIC MICRO (PUS / URINE / BLOOD)
+function openMicroForm(id) {
+    document.querySelectorAll('.micro-subform')
+        .forEach(section => {
+            section.classList.remove('active');
         });
     document.getElementById(id)
         .classList.add('active');
@@ -1402,7 +1465,7 @@ function submitPusCultureForm(event) {
     `;
     tableBody.appendChild(newRow);
     document.getElementById('pusCultureTableContainer').style.display = 'block';
-    document.getElementById('microFinalSubmitBtn').style.display = 'inline-block';
+    document.getElementById('pusFinalSubmitBtn').style.display = 'inline-block';
 
     Swal.fire({ icon: 'success', title: 'Added', text: 'Row added to PUS CULTURE table', showConfirmButton: false, timer: 1500 });
 
@@ -1452,7 +1515,7 @@ function submitUrineCultureForm(event) {
     `;
     tableBody.appendChild(newRow);
     document.getElementById('urineCultureTableContainer').style.display = 'block';
-    document.getElementById('microFinalSubmitBtn').style.display = 'inline-block';
+    document.getElementById('urineFinalSubmitBtn').style.display = 'inline-block';
 
     Swal.fire({ icon: 'success', title: 'Added', text: 'Row added to URINE CULTURE table', showConfirmButton: false, timer: 1500 });
 
@@ -1503,7 +1566,7 @@ function submitBloodCultureForm(event) {
     `;
     tableBody.appendChild(newRow);
     document.getElementById('bloodCultureTableContainer').style.display = 'block';
-    document.getElementById('microFinalSubmitBtn').style.display = 'inline-block';
+    document.getElementById('bloodFinalSubmitBtn').style.display = 'inline-block';
 
     Swal.fire({ icon: 'success', title: 'Added', text: 'Row added to BLOOD CULTURE table', showConfirmButton: false, timer: 1500 });
 
@@ -1511,26 +1574,32 @@ function submitBloodCultureForm(event) {
     form.classList.remove('was-validated');
 }
 
-// ===================== MICRO FINAL SUBMIT (only touches the 3 micro tables) =====================
-function resetMicroTable() {
-    // TODO: send collected data to the server here before clearing, if needed.
+// ===================== MICRO FINAL SUBMIT (per sub-tab, only touches its own table) =====================
+function resetSingleMicroTable(type) {
+    const map = {
+        pus:   { body: 'pusCultureDataBody',   container: 'pusCultureTableContainer',   btn: 'pusFinalSubmitBtn',   label: 'PUS CULTURE' },
+        urine: { body: 'urineCultureDataBody', container: 'urineCultureTableContainer', btn: 'urineFinalSubmitBtn', label: 'URINE CULTURE' },
+        blood: { body: 'bloodCultureDataBody', container: 'bloodCultureTableContainer', btn: 'bloodFinalSubmitBtn', label: 'BLOOD CULTURE' }
+    };
 
-    ['pusCultureDataBody', 'urineCultureDataBody', 'bloodCultureDataBody'].forEach(id => {
-        const body = document.getElementById(id);
-        if (body) body.innerHTML = '';
-    });
+    const cfg = map[type];
+    if (!cfg) return;
 
-    ['pusCultureTableContainer', 'urineCultureTableContainer', 'bloodCultureTableContainer'].forEach(id => {
-        const container = document.getElementById(id);
-        if (container) container.style.display = 'none';
-    });
+    // TODO: send this table's collected data to the server here before clearing, if needed.
 
-    document.getElementById('microFinalSubmitBtn').style.display = 'none';
+    const body = document.getElementById(cfg.body);
+    if (body) body.innerHTML = '';
+
+    const container = document.getElementById(cfg.container);
+    if (container) container.style.display = 'none';
+
+    const btn = document.getElementById(cfg.btn);
+    if (btn) btn.style.display = 'none';
 
     Swal.fire({
         icon: 'success',
         title: 'Submitted Successfully',
-        text: 'MICRO data has been submitted and tables reset',
+        text: cfg.label + ' data has been submitted and table reset',
         showConfirmButton: false,
         timer: 2000
     });
