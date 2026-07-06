@@ -300,12 +300,12 @@
                         <div class="card shadow-lg border-0">
 
                             <div class="patient-card">
-                                <h3 class="page-title">
+                                <h3 class="page-title mb-0 pt-3 pb-0">
                                     <span class="step-no">1</span>
                                     Patient Registration - Basic Details
                                 </h3>
 
-                                <div class="card-body">
+                                <div class="card-body pt-3 pb-3">
 
                                     <div class="row">
 

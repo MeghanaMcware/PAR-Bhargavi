@@ -101,4 +101,8 @@
 .active1 i {
     color: #fff !important;
 }
+
+.simplebar-content-wrapper{
+       overflow: visible !important;
+}
 </style>
