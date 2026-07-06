@@ -58,9 +58,9 @@
                                     <a href="{{ url('admin/patient/create') }}" class="btn btn-warning btn-sm d-flex flex-row">
                                         <i class="bi bi-pencil me-1"></i> <span>Edit</span>
                                     </a>
-                                    <a href="{{ url('admin/patient/update') }}" class="btn btn-info btn-sm d-flex flex-row">
+                                    <!-- <a href="{{ url('admin/patient/update') }}" class="btn btn-info btn-sm d-flex flex-row">
                                         <i class="bi bi-arrow-repeat me-1"></i> <span>Update</span>
-                                    </a>
+                                    </a> -->
                                   
                                 </td>
                             </tr>
