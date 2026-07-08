@@ -24,14 +24,20 @@
                                                 Please enter UHID/Rgen No.
                                             </div>
                                         </div>
-                                        <div class="mb-3 col-lg-4 col-12">
-                                            <label class="form-label mb-0">Date of Admission</label>
-                                            <input class="form-control" type="date" name="Date_admission"
-                                                placeholder="dd-mm-yyyy">
-                                            <div class="invalid-feedback">
-                                                Please enter Date of Admission
-                                            </div>
-                                        </div>
+                                       <div class="mb-3 col-lg-4 col-12">
+    <label class="form-label mb-0">Date of Admission</label>
+    <input class="form-control"
+           type="date"
+           id="date_admission"
+           name="Date_admission"
+           >
+
+    <div class="invalid-feedback">
+        Please enter Date of Admission.
+    </div>
+</div>
+
+
 
 
                                         <div class="mb-3 col-lg-4 col-12">
@@ -80,16 +86,20 @@
                                             </div>
                                         </div>
                                         <div class="mb-3 col-lg-4 col-12">
-                                            <div class="mb-0">
-                                                <label class="col-form-label mb-0 pb-0 pt-0">Symptom Duration</label>
-                                                <select class="js-example-placeholder-multiple col-sm-12">
-                                                    <option value="AL">>15days (3weeks)</option>
-                                                    <option value="WY">1 week</option>
-                                                    <option value="WY">3 days</option>
-                                                    <option value="WY">1 week</option>
-                                                </select>
-                                            </div>
-                                        </div>
+    <label for="symptom_duration" class="form-label mb-0">
+        Symptom Duration
+    </label>
+    <input type="text"
+           class="form-control"
+           id="symptom_duration"
+           name="symptom_duration"
+           placeholder="Enter symptom duration"
+           >
+
+    <div class="invalid-feedback">
+        Please enter symptom duration.
+    </div>
+</div>
                                         <div class="mb-3 col-lg-4 col-12">
                                             <div class="mb-0">
                                                 <label class="col-form-label mb-0 pb-0 pt-0">Comorbidities(CC INDEX)</label>
@@ -131,18 +141,23 @@
                                                             Please enter Previously received any antibiotic last 3 months?
                                                         </div>
                                                     </div>
-                                                    <div class="mb-3 col-lg-4 col-12">
-                                                        <label class="form-label mb-0">Initital probable sepsis diagnosis
-                                                            mentioned in
-                                                            file</label>
-                                                        <input class="form-control" type="text" name="comorbidity"
-                                                            placeholder="Enter initital probable sepsis diagnosis mentioned in file">
+                                                   <div class="mb-3 col-lg-4 col-12">
+    <label class="form-label mb-0">
+        Initial Probable Sepsis Diagnosis Mentioned in File
+    </label>
 
-                                                        <div class="invalid-feedback">
-                                                            Please enter initital probable sepsis diagnosis mentioned in
-                                                            file
-                                                        </div>
-                                                    </div>
+    <select class="form-select"
+            name="initial_probable_sepsis_diagnosis"
+            >
+        <option value="">Select</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+    </select>
+
+    <div class="invalid-feedback">
+        Please select Yes or No.
+    </div>
+</div>
                                                     <div class="mb-3 col-lg-4 col-12">
                                                         <label class="form-label mb-0">Direct admission here or referred
                                                             here?</label>

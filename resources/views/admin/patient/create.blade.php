@@ -1293,4 +1293,28 @@
         }
     </script>
 
+<script>
+    document.getElementById("date_admission").min = new Date().toISOString().split("T")[0];
+</script>
+<script>
+function addPatientOutcome() {
+    let container = document.getElementById("patientOutcomeContainer");
+
+    let div = document.createElement("div");
+    div.className = "input-group mb-2";
+
+    div.innerHTML = `
+        <input type="text"
+               class="form-control"
+               name="patient_outcome_day[]"
+               placeholder="Enter Patient Outcome Day">
+
+        <button type="button" class="btn btn-danger" onclick="this.parentElement.remove()">
+            -
+        </button>
+    `;
+
+    container.appendChild(div);
+}
+</script>
 @endsection
