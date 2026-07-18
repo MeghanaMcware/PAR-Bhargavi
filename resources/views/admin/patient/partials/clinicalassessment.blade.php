@@ -6,11 +6,26 @@
                                 </h3>
                                 <div class="card-body pt-3 pb-3">
                                     <div class="row mb-3 pt-3 pb-3">
-
+ <div class="mb-3 col-lg-4 col-12">
+                                            <label class="form-label mb-0">Hospital code</label>
+                                            <input class="form-control" type="text" name="Date_admission"
+                                                placeholder="Enter Hospital code">
+                                            <div class="invalid-feedback">
+                                                Please enter Hospital code
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 col-lg-4 col-12">
+                                            <label class="form-label mb-0">UHID/Rgen No.</label>
+                                            <input class="form-control" type="text" name="Date_admission"
+                                                placeholder="Enter UHID/Rgen No.">
+                                            <div class="invalid-feedback">
+                                                Please enter UHID/Rgen No.
+                                            </div>
+                                        </div>
                                         <div class="col-md-4 col-12 mb-3">
                                             <label class="form-label mb-0">SOFA score at admission</label>
-                                            <input class="form-control" type="text" name="sofa_score_admission"
-                                                value="{{ old('sofa_score_admission', $patient->clinicalAssessment?->sofa_score_admission ?? '') }}" placeholder="Enter SOFA score at admission">
+                                            <input class="form-control" type="date" name="SOFAscoreadmission"
+                                                placeholder="Enter SOFA score at admission">
 
                                             <div class="invalid-feedback">
                                                 Please enter SOFA score at admission
@@ -34,7 +49,7 @@
                                                 Please enter MEWS Score
                                             </div>
                                         </div>
-                                        <div class="col-md-4 col-12 mb-3">
+                                        <div class="col-md-3 col-12 mb-3">
                                             <label class="form-label mb-0">NEWS Score</label>
                                             <input class="form-control" type="text" name="news_score"
                                                 value="{{ old('news_score', $patient->clinicalAssessment?->news_score ?? '') }}" placeholder="Enter NEWS Score">
@@ -43,7 +58,7 @@
                                                 Please enter NEWS Score
                                             </div>
                                         </div>
-                                        <div class="col-md-4 col-12 mb-3">
+                                        <div class="col-md-3 col-12 mb-3">
                                             <label class="form-label mb-0">MDRO Screening</label>
                                             <input class="form-control" type="text" name="mdro_screening"
                                                 value="{{ old('mdro_screening', $patient->clinicalAssessment?->mdro_screening ?? '') }}" placeholder="Enter MDRO Screening">
@@ -52,7 +67,7 @@
                                                 Please enter MDRO Screening
                                             </div>
                                         </div>
-                                        <div class="mb-3 col-md-4 col-12">
+                                        <div class="mb-3 col-md-6 col-12">
                                             <label class="form-label mb-0">Organ dysfunction?
                                                 Renal/Metabolic/cardiac/haematology/respiratory</label>
                                             <input class="form-control" type="text" name="organ_dysfunction"
@@ -408,56 +423,25 @@
                                         </div>
 
                                         <!-- Patient Outcome - Day 7 -->
-                                        <div class="col-md-4 col-12 mb-3">
-                                            <label class="form-label mb-0">Patient Outcome at 7th Day</label>
-                                            <select class="form-select" name="outcome_day7">
-                                                <option value="">Select</option>
-                                                <option>Recovered</option>
-                                                <option>Improved</option>
-                                                <option>Stable</option>
-                                                <option>Worsened</option>
-                                                <option>Expired</option>
-                                            </select>
-                                        </div>
+                                        <div class="col-md-6 col-12 mb-3">
+    <label class="form-label">Patient Outcome Day</label>
 
-                                        <!-- Patient Outcome - Day 14 -->
-                                        <div class="col-md-4 col-12 mb-3">
-                                            <label class="form-label mb-0">Patient Outcome at 14th Day</label>
-                                            <select class="form-select" name="outcome_day14">
-                                                <option value="">Select</option>
-                                                <option>Recovered</option>
-                                                <option>Improved</option>
-                                                <option>Stable</option>
-                                                <option>Worsened</option>
-                                                <option>Expired</option>
-                                            </select>
-                                        </div>
+    <div id="patientOutcomeContainer">
+        <div class="input-group mb-2">
+            <input type="text"
+                   class="form-control"
+                   name="patient_outcome_day[]"
+                   placeholder="Enter Patient Outcome Day"
+                   >
 
-                                        <!-- Patient Outcome - Day 21 -->
-                                        <div class="col-md-4 col-12 mb-3">
-                                            <label class="form-label mb-0">Patient Outcome at 21st Day</label>
-                                            <select class="form-select" name="outcome_day21">
-                                                <option value="">Select</option>
-                                                <option>Recovered</option>
-                                                <option>Improved</option>
-                                                <option>Stable</option>
-                                                <option>Worsened</option>
-                                                <option>Expired</option>
-                                            </select>
-                                        </div>
+            <button type="button" class="btn btn-success btn-sm" onclick="addPatientOutcome()">
+                +
+            </button>
+        </div>
+    </div>
+</div>
 
-                                        <!-- Patient Outcome - Day 28 -->
-                                        <div class="col-md-4 col-12 mb-3">
-                                            <label class="form-label mb-0">Patient Outcome at 28th Day</label>
-                                            <select class="form-select" name="outcome_day28">
-                                                <option value="">Select</option>
-                                                <option>Recovered</option>
-                                                <option>Improved</option>
-                                                <option>Stable</option>
-                                                <option>Worsened</option>
-                                                <option>Expired</option>
-                                            </select>
-                                        </div>
+
 
                                         <!-- ICU Hospitalization -->
                                         <div class="col-md-4 col-12 mb-3">
@@ -478,6 +462,40 @@
                                             <label class="form-label mb-0">Discharge Date</label>
                                             <input type="date" class="form-control" name="discharge_date" value="{{ old('discharge_date', $patient->clinicalAssessment?->discharge_date ?? '') }}">
                                         </div>
+
+                                        <div class="row">
+    <div class="col-md-4">
+        <label for="sirs_datetime" class="form-label">
+            Date & Time of Meeting SIRS Criteria
+            
+        </label>
+        <input type="datetime-local"
+               class="form-control"
+               id="sirs_datetime"
+               name="sirs_datetime"
+               >
+    </div>
+    <div class="col-md-4">
+    <label for="blood_culture_send_time" class="form-label">
+        Blood Culture Send Time 
+    </label>
+    <input type="time"
+           class="form-control"
+           id="blood_culture_send_time"
+           name="blood_culture_send_time"
+           >
+</div>
+<div class="col-md-4">
+    <label for="first_dose_antibiotic_time" class="form-label">
+        First Dose Antibiotic Administered Time 
+    </label>
+    <input type="time"
+           class="form-control"
+           id="first_dose_antibiotic_time"
+           name="first_dose_antibiotic_time"
+           >
+</div>
+</div>
 
                                         <div class="d-flex justify-content-between align-items-center mt-5">
 

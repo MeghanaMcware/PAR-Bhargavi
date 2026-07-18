@@ -29,19 +29,7 @@
                                                         Please enter day
                                                     </div>
                                                 </div>
-                                                <div class="mb-3 col-md-4 col-12">
-                                                    <label for=" mb-0" style="margin-bottom: 0px !important;"
-                                                        class="form-label">
-                                                        Lab Parameters
-                                                    </label>
-
-                                                    <input class="form-control" type="text" id="lab_parameters"
-                                                        name="lab_parameters" placeholder="Enter Lab Parameters">
-
-                                                    <div class="invalid-feedback">
-                                                        Please enter lab parameters
-                                                    </div>
-                                                </div>
+                                                
 
                                                 <div class="mb-3 col-md-4 col-12">
                                                     <label for="f1-last-name mb-0" style="margin-bottom: 0px !important;"
