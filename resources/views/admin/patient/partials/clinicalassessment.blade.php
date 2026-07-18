@@ -24,8 +24,8 @@
                                         </div>
                                         <div class="col-md-4 col-12 mb-3">
                                             <label class="form-label mb-0">SOFA score at admission</label>
-                                            <input class="form-control" type="date" name="SOFAscoreadmission"
-                                                placeholder="Enter SOFA score at admission">
+                                            <input class="form-control" type="text" name="sofa_score_admission"
+                                                value="{{ old('sofa_score_admission', $patient->clinicalAssessment?->sofa_score_admission ?? '') }}" placeholder="Enter SOFA score at admission">
 
                                             <div class="invalid-feedback">
                                                 Please enter SOFA score at admission
