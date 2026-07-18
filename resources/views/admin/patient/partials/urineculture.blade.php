@@ -6,16 +6,19 @@
 
                                     <div class="card-body">
                                         <div class="d-flex flex-column ">
-                                            <div class="row g-3 mb-3">
+                                                        <!-- Modal -->
+<div class="modal fade" id="urineCultureModal" tabindex="-1" aria-labelledby="urineCultureModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="urineCultureModalLabel">UrineCulture Entry</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<div class="row g-3 mb-3">
                                                 <div class="col-md-4 col-12 mb-0"><label
                                                         class="form-label pt-0 pb-0 mb-0">Day</label><input
                                                         class="form-control" name="urineday" placeholder="Enter Day">
-                                                </div>
-                                                <!-- UHID -->
-                                                <div class="col-md-4 col-12 mb-3">
-                                                    <label class="form-label mb-0">UHID (Single Patient)</label>
-                                                    <input type="text" class="form-control" name="uhid"
-                                                        placeholder="Enter UHID">
                                                 </div>
 
                                                 <!-- Testing Date -->
@@ -208,14 +211,25 @@
                                                 </div>
 
                                             </div>
-                                            <div class="d-flex flex-column align-items-center">
-                                                <button type="button" class="btn btn-primary"
-                                                    onclick="addUrineCultureData()">Add</button>
-                                            </div>
-                                        </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="addUrineCultureData(false); var m = bootstrap.Modal.getInstance(document.getElementById('urineCultureModal')); if(m) m.hide();">Save Record</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-3 mt-3">
+    <button type="button" class="btn btn-primary" onclick="openUrineCultureModal()">
+        <i class="bi bi-plus-circle me-1"></i> Add New Record
+    </button>
+</div>
+
 
                                         <!-- Urine Culture Data Table -->
-                                        <div id="urineCultureTableContainer" class="mt-4" style="display: none;">
+                                        <div id="urineCultureTableContainer" class="mt-4">
                                             <h3 class="mb-3 text-center"><b>Urine Culture Data</b></h3>
                                             <div class="table-responsive">
                                                 <table class="table table-bordered table-striped">
@@ -257,11 +271,9 @@
                                             </button>
 
                                             <div>
-                                                <button type="button" class="btn btn-success px-4 me-2"
-                                                    onclick="saveStep()">
-                                                    <i class="fa fa-save me-2"></i> Save Urine Culture
-                                                </button>
+                                                
 
+                                                <button type="submit" class="btn btn-success me-2" name="save_progress" value="true"><i class="fa fa-save"></i> Save Progress</button>
                                                 <button type="button" class="btn btn-primary px-4" onclick="nextStep()">
                                                     Next <i class="fa fa-arrow-right ms-2"></i>
                                                 </button>

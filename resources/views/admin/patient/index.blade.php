@@ -24,7 +24,7 @@
 
     <div class="">
         <div class="d-flex justify-content-start mb-3">
-            <a href="{{ url('admin/patient/create') }}" class="btn btn-primary">
+            <a href="{{ route('admin.patients.create') }}" class="btn btn-primary">
                 <i class="bi bi-plus me-1"></i> Add Patient
             </a>
         </div>
@@ -37,6 +37,7 @@
                         <thead>
                             <tr>
                                 <th style="width:5%">Sl.No</th>
+                                <th style="white-space:nowrap">UHID</th>
                                 <th style="white-space:nowrap">Date of Admission</th>
                                 <th style="white-space:nowrap">Time of Presentation</th>
                                 <th style="white-space:nowrap">Sex</th>
@@ -45,25 +46,24 @@
                         </thead>
                         <tbody>
 
+                            @foreach($patients as $key => $patient)
                             <tr>
-                                <td>01</td>
-                                <td>07-06-2026</td>
-                                <td>10:00PM</td>
-                                <td>Male</td>
+                                <td>{{ str_pad($key + 1, 2, '0', STR_PAD_LEFT) }}</td>
+                                <td>{{ $patient->uhid }}</td>
+                                <td>{{ $patient->date_of_admission ? \Carbon\Carbon::parse($patient->date_of_admission)->format('d-m-Y') : 'N/A' }}</td>
+                                <td>{{ $patient->time_of_presentation ?? 'N/A' }}</td>
+                                <td>{{ $patient->sex ?? 'N/A' }}</td>
 
                                 <td class="d-flex flex-row gap-1">
-                                    <a href="{{ url('admin/patient/view') }}" class="btn btn-primary btn-sm d-flex flex-row ">
+                                    <a href="{{ route('admin.patients.show', $patient->id) }}" class="btn btn-primary btn-sm d-flex flex-row ">
                                         <i class="bi bi-eye me-1"></i> <span>View</span>
                                     </a>
-                                    <a href="{{ url('admin/patient/create') }}" class="btn btn-warning btn-sm d-flex flex-row">
+                                    <a href="{{ route('admin.patients.edit', $patient->id) }}" class="btn btn-warning btn-sm d-flex flex-row">
                                         <i class="bi bi-pencil me-1"></i> <span>Edit</span>
                                     </a>
-                                    <!-- <a href="{{ url('admin/patient/update') }}" class="btn btn-info btn-sm d-flex flex-row">
-                                        <i class="bi bi-arrow-repeat me-1"></i> <span>Update</span>
-                                    </a> -->
-                                  
                                 </td>
                             </tr>
+                            @endforeach
 
                         </tbody>
                     </table>

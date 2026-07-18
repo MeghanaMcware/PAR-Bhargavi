@@ -6,7 +6,16 @@
 
                                     <div class="card-body">
                                         <div>
-                                            <div class="row">
+                                            <!-- Modal -->
+<div class="modal fade" id="serialLabModal" tabindex="-1" aria-labelledby="serialLabModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="serialLabModalLabel">Serial Lab Entry</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
                                                 <div class="mb-3 col-md-4 col-12">
                                                     <label for=" mb-0" style="margin-bottom: 0px !important;"
                                                         class="form-label">
@@ -272,14 +281,25 @@
                                                 </div>
 
                                             </div>
-                                            <div class="d-flex flex-column align-items-center">
-                                                <button type="button" class="btn btn-primary"
-                                                    onclick="addSerialLabData()">Add</button>
-                                            </div>
-                                        </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="addSerialLabData(false); var m = bootstrap.Modal.getInstance(document.getElementById('serialLabModal')); if(m) m.hide();">Save Record</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-3 mt-3">
+    <button type="button" class="btn btn-primary" onclick="openSerialLabModal()">
+        <i class="bi bi-plus-circle me-1"></i> Add New Record
+    </button>
+</div>
+
 
                                         <!-- Serial Lab Data Table -->
-                                        <div id="serialLabTableContainer" class="mt-4" style="display: none;">
+                                        <div id="serialLabTableContainer" class="mt-4">
                                             <h3 class="mb-3 text-center"><b>Serial Lab Data</b></h3>
                                             <div class="table-responsive">
                                                 <table class="table table-bordered table-striped">
@@ -340,11 +360,9 @@
                                             </button>
 
                                             <div>
-                                                <button type="button" class="btn btn-success px-4 me-2"
-                                                    onclick="saveStep()">
-                                                    <i class="fa fa-save me-2"></i> Serial Lab Save
-                                                </button>
+                                                
 
+                                                <button type="submit" class="btn btn-success me-2" name="save_progress" value="true"><i class="fa fa-save"></i> Save Progress</button>
                                                 <button type="button" class="btn btn-primary px-4" onclick="nextStep()">
                                                     Next <i class="fa fa-arrow-right ms-2"></i>
                                                 </button>

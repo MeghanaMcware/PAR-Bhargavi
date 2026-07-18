@@ -6,7 +6,16 @@
 
                                     <div class="card-body">
 
-                                        <div class="row g-3 mb-3">
+                                                    <!-- Modal -->
+<div class="modal fade" id="bloodCultureModal" tabindex="-1" aria-labelledby="bloodCultureModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bloodCultureModalLabel">Blood Culture Entry</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<div class="row g-3 mb-3">
                                             <div class="col-md-4 col-12 mb-0"><label
                                                     class="form-label pt-0 pb-0 mb-0">Day</label><input class="form-control"
                                                     name="bloodday" placeholder="Enter Day">
@@ -27,12 +36,7 @@
                                                 </select>
                                             </div>
 
-                                            <!-- UHID -->
-                                            <div class=" col-md-4 col-12 mb-3">
-                                                <label class="form-label mb-0">UHID (Single Patient)</label>
-                                                <input type="text" class="form-control" name="uhid"
-                                                    placeholder="Enter UHID">
-                                            </div>
+
 
                                             <!-- Testing Date -->
                                             <div class=" col-md-4 col-12 mb-3">
@@ -223,14 +227,25 @@
                                                 </select>
                                             </div>
 
-                                        </div>
-                                        <div class="d-flex flex-column align-items-center">
-                                            <button type="button" class="btn btn-primary"
-                                                onclick="addBloodCultureData()">Add</button>
-                                        </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="addBloodCultureData(false); var m = bootstrap.Modal.getInstance(document.getElementById('bloodCultureModal')); if(m) m.hide();">Save Record</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-3 mt-3">
+    <button type="button" class="btn btn-primary" onclick="openBloodCultureModal()">
+        <i class="bi bi-plus-circle me-1"></i> Add New Record
+    </button>
+</div>
+
 
                                         <!-- Blood Culture Data Table -->
-                                        <div id="bloodCultureTableContainer" class="mt-4" style="display: none;">
+                                        <div id="bloodCultureTableContainer" class="mt-4">
                                             <h3 class="mb-3 text-center"><b>Blood Culture Data</b></h3>
                                             <div class="table-responsive">
                                                 <table class="table table-bordered table-striped">

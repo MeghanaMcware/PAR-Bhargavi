@@ -23,18 +23,13 @@ Route::prefix('admin')->as('admin.')->group(function () {
 
 
 
-    Route::get('/patient/view', function () {
-        return view('admin.patient.view');
-    });
-    Route::get('/patient/create', function () {
-        return view('admin.patient.create');
-    });
-    Route::get('/patient/index', function () {
-        return view('admin.patient.index');
-    });
-Route::get('/patient/update', function () {
-    return view('admin.patient.update');
-});
+    // Proper RESTful routes for Patient Form
+    Route::get('/patient', [\App\Http\Controllers\Admin\PatientController::class, 'index'])->name('patients.index');
+    Route::get('/patient/create', [\App\Http\Controllers\Admin\PatientController::class, 'create'])->name('patients.create');
+    Route::post('/patient', [\App\Http\Controllers\Admin\PatientController::class, 'store'])->name('patients.store');
+    Route::get('/patient/{patient}', [\App\Http\Controllers\Admin\PatientController::class, 'show'])->name('patients.show');
+    Route::get('/patient/{patient}/edit', [\App\Http\Controllers\Admin\PatientController::class, 'edit'])->name('patients.edit');
+    Route::put('/patient/{patient}', [\App\Http\Controllers\Admin\PatientController::class, 'update'])->name('patients.update');
 Route::get('/patient/continueform', function () {
     return view('admin.patient.continueform');
 });
