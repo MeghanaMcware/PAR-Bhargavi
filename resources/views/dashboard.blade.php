@@ -1,3 +1,860 @@
+
+
+@extends('admin.layout.app')
+@section('title') Dashboard @endsection
+@section('style')
+
+ <style>
+    
+
+
+        .dashboard {
+                padding: 0px 25px;
+        }
+
+
+
+        /* header */
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+
+        .header h2 {
+            font-weight: 700;
+        }
+
+
+
+        .card-box {
+
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid #edf0f6;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .05);
+
+            height: 100%;
+
+        }
+
+
+
+
+        /* cards */
+
+        .icon {
+
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+
+        }
+
+
+        .blue {
+            background: #e8edff;
+            color: #3867ff;
+        }
+
+
+        .green {
+            background: #e5fff4;
+            color: #18b77a;
+        }
+
+
+        .orange {
+            background: #fff1dd;
+            color: #ff9b21;
+        }
+
+
+        .pink {
+            background: #ffe7ef;
+            color: #ff4d88;
+        }
+
+
+
+        .title {
+            font-size: 15px;
+        }
+
+
+        .number {
+
+            font-size: 24px;
+            font-weight: 700;
+
+        }
+
+
+        .up {
+
+            font-size: 12px;
+            color: #16b36a;
+
+        }
+
+
+
+
+
+        canvas {
+
+            width: 100% !important;
+            max-height: 220px;
+
+        }
+
+
+
+
+        .chart-card {
+
+            min-height: 300px;
+
+        }
+
+
+
+
+        .activity {
+
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+
+        }
+
+
+        .activity-icon {
+
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #edf4ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3165ff;
+            flex-shrink: 0;
+
+        }
+
+
+
+        .table-responsive {
+
+            overflow-x: auto;
+
+        }
+
+
+
+        table {
+
+            min-width: 600px;
+
+        }
+
+
+        .status {
+
+            background: #eaffdf;
+            color: #18a45c;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+
+        }
+
+
+
+
+
+
+        /* RESPONSIVE */
+
+
+        @media(max-width:992px) {
+
+
+            .dashboard {
+                padding: 15px;
+            }
+
+
+        }
+
+
+
+        @media(max-width:768px) {
+
+
+            .header {
+
+                flex-direction: column;
+                align-items: flex-start;
+
+            }
+
+
+
+            .card-box {
+
+                padding: 15px;
+
+            }
+
+
+            .number {
+
+                font-size: 20px;
+
+            }
+
+
+            .chart-card {
+
+                min-height: auto;
+
+            }
+
+
+        }
+
+
+
+        @media(max-width:576px) {
+
+
+            .dashboard {
+
+                padding: 10px;
+
+            }
+
+
+            .row {
+
+                --bs-gutter-x: 12px;
+
+            }
+
+
+            .icon {
+
+                width: 38px;
+                height: 38px;
+                font-size: 15px;
+
+            }
+
+
+
+            .card-box {
+
+                border-radius: 12px;
+
+            }
+
+
+
+            h2 {
+
+                font-size: 22px;
+
+            }
+
+
+
+        }
+        .table-responsive{
+    overflow-x:auto;
+    scrollbar-width: thin;          /* Firefox */
+    scrollbar-color: #b8c2d8 transparent;
+}
+
+
+/* Chrome, Edge, Safari */
+
+.table-responsive::-webkit-scrollbar{
+    height:5px;   /* horizontal scrollbar height */
+}
+
+
+.table-responsive::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+
+.table-responsive::-webkit-scrollbar-thumb{
+    background:#b8c2d8;
+    border-radius:20px;
+}
+
+
+.table-responsive::-webkit-scrollbar-thumb:hover{
+    background:#7d8aa8;
+}
+    </style>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+@endsection
+@section('content')
+<div class="container-fluid">
+    <div class="page-title">
+        <div class="row d-flex justify-content-end">
+            <div class="col-12 col-sm-6">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a class="home-item" href="">
+                            <i class="fa-solid fa-house"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"> Dashboard</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+   <div class="dashboard">
+
+
+        <!-- TOP CARDS -->
+
+
+        <div class="row g-3">
+
+
+
+            <div class="col-12 col-sm-6 col-xl-4">
+
+                <div class="card-box">
+
+
+                    <div class="d-flex gap-3">
+
+
+                        <div class="icon blue">
+                            <i class="fa fa-users"></i>
+                        </div>
+
+
+                        <div>
+
+                            <div class="title">
+                               <b> Total Patients</b>
+                            </div>
+
+
+                            <div class="number">
+                                1,248
+                            </div>
+
+
+                            <div class="up">
+                                +12.5% from last month ↑
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <canvas id="mini1"></canvas>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+            <div class="col-12 col-sm-6 col-xl-4">
+
+                <div class="card-box">
+
+
+                    <div class="d-flex gap-3">
+
+                        <div class="icon green">
+                            <i class="fa fa-user-doctor"></i>
+                        </div>
+
+
+                        <div>
+
+                            <div class="title">
+                                <b>Total Hospital</b>
+                            </div>
+
+                            <div class="number">
+                                86
+                            </div>
+
+
+                            <div class="up">
+                                +8.3% from last month ↑
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <canvas id="mini2"></canvas>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+            <div class="col-12 col-sm-6 col-xl-4">
+
+                <div class="card-box">
+
+
+                    <div class="d-flex gap-3">
+
+                        <div class="icon orange">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+
+
+                        <div>
+
+                            <div class="title">
+                                <b>Total Registered Hospitals</b>
+                            </div>
+
+                            <div class="number">
+                                64
+                            </div>
+
+
+                            <div class="up">
+                                +15.2% yesterday ↑
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <canvas id="mini3"></canvas>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+           
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- CHART ROW -->
+
+
+        <div class="row g-3 mt-1">
+
+
+
+            <div class="col-12 col-xl-6">
+
+                <div class="card-box chart-card">
+
+                    <h6><b>Patients Overview</b></h6>
+
+                    <canvas id="line"></canvas>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+            <div class="col-12 col-md-6 col-xl-3">
+
+                <div class="card-box chart-card">
+
+
+                    <h6><b>Patient by Gender</b></h6>
+
+
+                    <canvas id="donut"></canvas>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+            <div class="col-12 col-md-6 col-xl-3">
+
+
+                <div class="card-box chart-card">
+
+
+                    <h6><b>Latest Activities</b></h6>
+
+
+
+                    <div class="activity">
+
+                        <div class="activity-icon">
+                            <i class="fa fa-user"></i>
+                        </div>
+
+                        <div>
+
+                            <b>New patient John Doe</b>
+
+                            <br>
+
+                            <small>Registered successfully</small>
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <div class="activity">
+
+                        <div class="activity-icon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+
+
+                        <div>
+
+                            <b>Appointment scheduled</b>
+
+                            <br>
+
+                            <small>With Dr Smith</small>
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                    <div class="activity">
+
+                        <div class="activity-icon">
+                            <i class="fa fa-flask"></i>
+                        </div>
+
+
+                        <div>
+
+                            <b>Lab test completed</b>
+
+                            <br>
+
+                            <small>Blood Test #BT1245</small>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- TABLES -->
+
+
+        <div class="row g-3 mt-1 mb-4">
+
+
+
+            <div class="col-12 col-xl-12">
+
+
+                <div class="card-box">
+
+
+                    <h6><b>Recent Patients</b></h6>
+
+
+                    <div class="table-responsive">
+                    <table class="table table-bordered table-striped text-center align-middle" id="data-source-1"
+                        style="width:100%">
+                        <thead>
+                            <tr>
+                                <th style="width:5%">Sl.No</th>
+                                <th style="white-space:nowrap">Patient Name</th>
+                                <th style="white-space:nowrap">Age</th>
+                                <th style="white-space:nowrap">Gander</th>
+                                <th style="white-space:nowrap">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                             <tr>
+
+                                <td>PT001248</td>
+                                <td>John Doe</td>
+                                <td>34</td>
+                                <td>Male</td>
+                                <td>
+                                    <span class="status">Active</span>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+@endsection
+
+@section('script')
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script>
+
+
+        function mini(id, color) {
+
+
+            new Chart(document.getElementById(id), {
+
+                type: "line",
+
+                data: {
+
+                    labels: [1, 2, 3, 4, 5, 6],
+
+                    datasets: [{
+
+                        data: [4, 8, 5, 9, 6, 10],
+
+                        borderColor: color,
+
+                        tension: .4,
+
+                        pointRadius: 0
+
+                    }]
+
+                },
+
+
+                options: {
+
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+
+                    scales: {
+
+                        x: {
+                            display: false
+                        },
+
+                        y: {
+                            display: false
+                        }
+
+                    }
+
+                }
+
+
+            })
+
+
+        }
+
+
+        mini("mini1", "#4267ff");
+        mini("mini2", "#16b77a");
+        mini("mini3", "#ff9d22");
+        mini("mini4", "#ff4d88");
+
+
+
+
+
+        new Chart(line, {
+
+            type: "line",
+
+            data: {
+
+                labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+
+                datasets: [{
+
+                    data: [32, 50, 68, 45, 86, 62, 91],
+
+                    borderColor: "#3265ff",
+
+                    fill: true,
+
+                    tension: .3
+
+                }]
+
+            },
+
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+
+        });
+
+
+
+
+
+
+        new Chart(donut, {
+
+            type: "doughnut",
+
+            data: {
+
+                labels: ["Male", "Female"],
+
+                datasets: [{
+
+                    data: [652, 596]
+
+                }]
+
+            },
+
+            options: {
+
+                cutout: "65%",
+
+                plugins: {
+
+                    legend: {
+
+                        position: "right"
+
+                    }
+
+                }
+
+            }
+
+        });
+
+
+    </script>
+@endsection
+
+
+
+
+
+
+
+
+
+//backup of new dashboard
 @extends('admin.layout.app')
 @section('title') Dashboard @endsection
 @section('style')
@@ -292,8 +1149,7 @@
 
     gap: 13px;
 
-     background:#fff;
-     color:#1f2937;
+    color: #ffffff;
 
     position: relative;
 
@@ -329,7 +1185,7 @@
 
     min-width: 44px;
 
-    border-radius: 50%;
+    border-radius: 12px;
 
     display: flex;
 
@@ -339,7 +1195,7 @@
 
     font-size: 19px;
 
-    color: #fff;
+    background: rgba(255, 255, 255, 0.20);
 
     border: 1px solid rgba(255, 255, 255, 0.15);
 
@@ -403,7 +1259,7 @@
 
     display: block;
 
-    font-size: 15px;
+    font-size: 9px;
 
     font-weight: 500;
 
@@ -428,55 +1284,7 @@
 /* =========================================================
    KPI COLORS
 ========================================================= */
-.kpi-blue .dashboard-kpi-icon{
 
-    background:#2563EB;
-
-}
-
-.kpi-green .dashboard-kpi-icon{
-
-    background:#16A34A;
-
-}
-
-.kpi-red .dashboard-kpi-icon{
-
-    background:#EF4444;
-
-}
-
-.kpi-orange .dashboard-kpi-icon{
-
-    background:#F59E0B;
-
-}
-
-.kpi-purple .dashboard-kpi-icon{
-
-    background:#7C3AED;
-
-}
-
-.kpi-cyan .dashboard-kpi-icon{
-
-    background:#0891B2;
-
-}
-
-.kpi-pink .dashboard-kpi-icon{
-
-    background:#EC4899;
-
-}
-
-.kpi-dark .dashboard-kpi-icon{
-
-    background:#2563EB;
-}
-
-
-/* 
 .kpi-blue {
 
     background: linear-gradient(
@@ -518,9 +1326,9 @@
         #ef4444
     );
 
-} */
+}
 
-/* 
+
 .kpi-cyan {
 
     background: linear-gradient(
@@ -562,7 +1370,7 @@
         #4b5563
     );
 
-} */
+}
 
 
 /* =========================================================
@@ -2338,12 +3146,12 @@ ORGAN CARD
             </span>
 
             <strong class="dashboard-kpi-value">
-               454
+                1,248
             </strong>
 
             <small class="dashboard-kpi-info">
                 <i class="fa fa-arrow-up"></i>
-                100% 
+                12% from last month
             </small>
 
         </div>
@@ -2361,16 +3169,16 @@ ORGAN CARD
         <div class="dashboard-kpi-content">
 
             <span class="dashboard-kpi-label">
-                Active ICU Patients
+                ICU Patients
             </span>
 
             <strong class="dashboard-kpi-value">
-                178
+                352
             </strong>
 
             <small class="dashboard-kpi-info">
                 <i class="fa fa-arrow-up"></i>
-                32.77%
+                8% from last month
             </small>
 
         </div>
@@ -2388,15 +3196,15 @@ ORGAN CARD
         <div class="dashboard-kpi-content">
 
             <span class="dashboard-kpi-label">
-                Discharged Patients
+                Critical
             </span>
 
             <strong class="dashboard-kpi-value">
-                276
+                89
             </strong>
 
             <small class="dashboard-kpi-info">
-                53.91%
+                7% of total patients
             </small>
 
         </div>
@@ -2414,15 +3222,15 @@ ORGAN CARD
         <div class="dashboard-kpi-content">
 
             <span class="dashboard-kpi-label">
-                Deaths
+                Discharged
             </span>
 
             <strong class="dashboard-kpi-value">
-                58
+                804
             </strong>
 
             <small class="dashboard-kpi-info">
-               11.33%
+                64% of total patients
             </small>
 
         </div>
@@ -2440,15 +3248,15 @@ ORGAN CARD
         <div class="dashboard-kpi-content">
 
             <span class="dashboard-kpi-label">
-                Mortality Rate
+                Male Patients
             </span>
 
             <strong class="dashboard-kpi-value">
-                11.33%
+                652
             </strong>
 
             <small class="dashboard-kpi-info">
-                Deaths/Total
+                52.2% of total
             </small>
 
         </div>
@@ -2466,15 +3274,15 @@ ORGAN CARD
         <div class="dashboard-kpi-content">
 
             <span class="dashboard-kpi-label">
-                Average Age
+                Female Patients
             </span>
 
             <strong class="dashboard-kpi-value">
-                57.6
+                596
             </strong>
 
             <small class="dashboard-kpi-info">
-                Years
+                47.8% of total
             </small>
 
         </div>
@@ -2492,15 +3300,15 @@ ORGAN CARD
         <div class="dashboard-kpi-content">
 
             <span class="dashboard-kpi-label">
-             Male:Female
+                Average Stay
             </span>
 
             <strong class="dashboard-kpi-value">
-               312:200
+                7.4
             </strong>
 
             <small class="dashboard-kpi-info">
-               60.94%:39.06%
+                Days
             </small>
 
         </div>
@@ -2518,15 +3326,15 @@ ORGAN CARD
         <div class="dashboard-kpi-content">
 
             <span class="dashboard-kpi-label">
-                Average Length of Stay
+                Hospitals
             </span>
 
             <strong class="dashboard-kpi-value">
-                7.6
+                42
             </strong>
 
             <small class="dashboard-kpi-info">
-                Days
+                Active Hospitals
             </small>
 
         </div>
