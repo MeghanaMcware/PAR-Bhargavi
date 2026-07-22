@@ -65,7 +65,8 @@
 
     /* Enhanced Sidebar Styling */
     .sidebar-wrapper {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e3a8a 100%) !important;
+            /* background: linear-gradient(135deg, #1e3a8a 0%, #1e3a8a 100%) !important; */
+            background:#0F2346 !important;
         box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
     }
 
@@ -237,7 +238,8 @@
     }
 
     .header-wrapper {
-        background: transparent !important;
+         background:#0F2346 !important;
+        /* background: transparent !important; */
         position: relative !important;
         z-index: 1 !important;
     }
